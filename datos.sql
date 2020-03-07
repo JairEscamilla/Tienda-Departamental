@@ -59,5 +59,33 @@ INSERT INTO pr1_productos(nombreProducto, descripcion, precio, stock, costoEnvio
 INSERT INTO pr1_productos(nombreProducto, descripcion, precio, stock, costoEnvio) VALUES ("Tapete exterior", "Tapete exterior para casa", 50, 15, 50);
 INSERT INTO pr1_productos(nombreProducto, descripcion, precio, stock, costoEnvio) VALUES ("Tapete interior", "Tapete interior", 50, 15, 50);
 
-INSERT INTO pr1_productos(nombreProducto, descripcion, precio, stock, costoEnvio) VALUES ("Tapete exterior", "Tapete exterior para casa", 50, 15, 50);
-INSERT INTO pr1_productos(nombreProducto, descripcion, precio, stock, costoEnvio) VALUES ("Tapete interior", "Tapete interior", 50, 15, 50);
+INSERT INTO pr1_productos(nombreProducto, descripcion, precio, stock, costoEnvio) VALUES ("Patines de hielo", "Comodos patines", 150, 30, 50);
+INSERT INTO pr1_productos(nombreProducto, descripcion, precio, stock, costoEnvio) VALUES ("Pistola de Gotcha", "Pistola de bolas de pintura", 250, 30, 50);
+
+INSERT INTO pr1_productos(nombreProducto, descripcion, precio, stock, costoEnvio) VALUES ("Traje de baño", "Traje de baño para adulto", 550, 40, 70);
+INSERT INTO pr1_productos(nombreProducto, descripcion, precio, stock, costoEnvio) VALUES ("Traje de baño para niño", "Comodo traje de baño para niño", 650, 30, 50);
+
+
+/* Insertando la relación entre categorias y productos */
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(1, 1);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(2, 1);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(3, 2);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(4, 2);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(5, 3);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(6, 3);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(7, 4);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(8, 4);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(9, 5);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(10, 5);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(11, 6);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(12, 6);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(13, 7);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(14, 7);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(15, 8);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(16, 8);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(17, 9);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(18, 9);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(19, 10);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(20, 10);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(21, 11);
+INSERT INTO pr1_categorias_a_Productos(pr1_productos_idProducto, pr1_categorias_productos_idCategoriap) VALUES(22, 11);
