@@ -100,3 +100,31 @@ FROM pr1_clientes
 LEFT JOIN pr1_tarjetas USING(username);
 
 /* PROCEDIMIENTO */
+delimiter $
+    CREATE DEFINER=`root`@`localhost` PROCEDURE `hacerCompra`(cliente VARCHAR(30), Producto INT, cantidadProductos INT, OUT totalVenta DECIMAL(10, 2), OUT pagoEnvio DECIMAL(10, 2))
+BEGIN 
+        DECLARE numProducts, prec, cEnv, descuento, nuevoStock INT;
+        DECLARE pagoTotal, dineroDescontado DECIMAL(10, 2);
+        DECLARE curProductos CURSOR FOR SELECT stock, precio, costoEnvio FROM pr1_productos WHERE idProducto = Producto;
+        DECLARE curDescuento CURSOR FOR SELECT descuentoEnvio FROM pr1_clientes cl LEFT JOIN pr1_categorias_clientes cc ON cl.idCategoria = cc.idCategoriaC WHERE cl.username = cliente;
+        SET numProducts = 0;
+        SET prec = 0;
+        SET cEnv = 0;
+        OPEN curProductos;
+        FETCH curProductos INTO numProducts, prec, cEnv;
+        IF cantidadProductos <= numProducts THEN 
+            SET pagoTotal = prec * cantidadProductos;
+            SET pagoEnvio = cEnv * cantidadProductos;
+            OPEN curDescuento;
+                FETCH curDescuento INTO descuento;
+                SET dineroDescontado = (pagoEnvio * descuento) / 100;
+                SET totalVenta = pagoTotal;
+                SET pagoEnvio = pagoEnvio - dineroDescontado;
+                SET nuevoStock = numProducts - cantidadProductos;
+                UPDATE pr1_productos SET stock = nuevoStock WHERE idProducto = Producto;
+            CLOSE curDescuento;
+        END IF;
+        CLOSE curProductos;
+    END $
+delimiter ;
+ 
