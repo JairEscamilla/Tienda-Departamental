@@ -184,13 +184,13 @@ CREATE TABLE IF NOT EXISTS `practica1`.`pr1_compras_productos` (
   CONSTRAINT `fk_pr1_compras_has_pr1_productos_pr1_compras1`
     FOREIGN KEY (`pr1_compras_idCompra`)
     REFERENCES `practica1`.`pr1_compras` (`idCompra`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_pr1_compras_has_pr1_productos_pr1_productos1`
     FOREIGN KEY (`pr1_productos_idProducto`)
     REFERENCES `practica1`.`pr1_productos` (`idProducto`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
