@@ -98,3 +98,11 @@ INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto
 INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(8, 21);
 INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(8, 10);
 INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(8, 14);
+
+/* Insertando devoluciones */
+INSERT INTO pr1_devoluciones(idCompra, idProductoDevuelto, comentarioDevolucion) VALUES(1, 1, "Fallas en el producto");
+INSERT INTO pr1_devoluciones(idCompra, idProductoDevuelto, comentarioDevolucion) VALUES(2, 21, "No era lo que esperaba");
+INSERT INTO pr1_devoluciones(idCompra, idProductoDevuelto, comentarioDevolucion) VALUES(1, 1, "Fallas en el producto");
+INSERT INTO pr1_devoluciones(idCompra, idProductoDevuelto, comentarioDevolucion) VALUES(2, 45, "No me gustó el producto");
+INSERT INTO pr1_devoluciones(idCompra, idProductoDevuelto, comentarioDevolucion) VALUES(5, 13, "Este producto no cumplió con mis expectativas.");
+INSERT INTO pr1_devoluciones(idCompra, idProductoDevuelto, comentarioDevolucion) VALUES(7, 12, "NO me gustó el producto");

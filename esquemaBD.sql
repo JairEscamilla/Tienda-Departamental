@@ -237,7 +237,6 @@ CREATE TABLE IF NOT EXISTS `practica1`.`pr1_devoluciones` (
   `idCompra` INT NOT NULL,
   `idProductoDevuelto` INT NOT NULL,
   `comentarioDevolucion` VARCHAR(100) NULL,
-  `cantidadProductosDevueltos` INT NOT NULL,
   PRIMARY KEY (`idDevolucion`),
   CONSTRAINT `idCompra`
     FOREIGN KEY (`idCompra`)
