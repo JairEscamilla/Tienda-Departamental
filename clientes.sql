@@ -4,6 +4,8 @@ INSERT INTO pr1_clientes(username, password, direccionEnvio, idCategoria, nombre
 INSERT INTO pr1_clientes(username, password, direccionEnvio, idCategoria, nombre, apPaterno, apMaterno, fechaNac, direccionFacturacion, RFC, codigoPostal) VALUES ("Raul4", "ruls123", "Direccion prueba 4", 4, "Raul", "Gonzalez", "Portillo", '2000-06-22', "Direccion facturacion 4", "GAFJ810702NA5", "07284");
 INSERT INTO pr1_clientes(username, password, direccionEnvio, idCategoria, nombre, apPaterno, apMaterno, fechaNac, direccionFacturacion, RFC, codigoPostal) VALUES ("Ulises5", "musk123", "Direccion prueba 5", 1, "Ulises", "Magaña", "Estrada", '2000-11-22', "Direccion facturacion 5", "GAFJ810702NA5", "07285");
 
+/* Insertando las tarjetas */
+
 
 /* Insertando las categorias de los clientes */
 INSERT INTO pr1_categorias_clientes(nombreCategoria, descuentoEnvio) VALUES("Básico", 15);
