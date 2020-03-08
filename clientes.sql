@@ -53,4 +53,16 @@ INSERT INTO pr1_tipo_pago(idTipoPago, TipoDePago) VALUES(3, "Transferencia elect
 INSERT INTO pr1_tipo_pago(idTipoPago, TipoDePago) VALUES(4, "Pago en tiendas de conveniencia");
 
 /* Insertando compras */
+INSERT INTO pr1_compras(timestamp, totalPagar, idTipoPago, user, status) VALUES('2020-01-15', 1500, 1, "Jair1", True);
+INSERT INTO pr1_compras(timestamp, totalPagar, idTipoPago, user, status) VALUES('2020-02-14', 500, 1, "Jair1", True);
+
+INSERT INTO pr1_compras(timestamp, totalPagar, idTipoPago, user, status) VALUES('2020-03-12', 700, 2, "Gaby2", False);
+INSERT INTO pr1_compras(timestamp, totalPagar, idTipoPago, user, status) VALUES('2020-02-09', 600, 2, "Gaby2", True);
+
+INSERT INTO pr1_compras(timestamp, totalPagar, idTipoPago, user, status) VALUES('2020-01-06', 1700, 2, "Cesar3", True);
+INSERT INTO pr1_compras(timestamp, totalPagar, idTipoPago, user, status) VALUES('2020-01-19', 2600, 2, "Cesar3", True);
+
+INSERT INTO pr1_compras(timestamp, totalPagar, idTipoPago, user, status) VALUES('2020-02-26', 1500, 2, "Ulises5", False);
+INSERT INTO pr1_compras(timestamp, totalPagar, idTipoPago, user, status) VALUES('2020-03-06', 600, 2, "Ulises5", True);
+
 
