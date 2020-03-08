@@ -207,12 +207,12 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `practica1`.`pr1_quejas`
+-- Table `practica1`.`pr1_quejas` 
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `practica1`.`pr1_quejas` (
+  `idQueja` INT NOT NULL AUTO_INCREMENT,
   `pr1_clientes_username` VARCHAR(30) NOT NULL,
   `pr1_asesores_idAsesor` INT NOT NULL,
-  `idQueja` INT NOT NULL AUTO_INCREMENT,
   `comentario` VARCHAR(100) NOT NULL,
   `status` INT NULL,
   PRIMARY KEY (`idQueja`),
@@ -254,7 +254,6 @@ CREATE TABLE IF NOT EXISTS `practica1`.`pr1_cancelacion` (
   `comentarioCancelacion` VARCHAR(100) NULL,
   `idCompra` INT NOT NULL,
   PRIMARY KEY (`idCancelacion`),
-  INDEX `fk_pr1_cancelacion_pr1_compras1_idx` (`idCompra` ASC) VISIBLE,
   CONSTRAINT `fk_pr1_cancelacion_pr1_compras1`
     FOREIGN KEY (`idCompra`)
     REFERENCES `practica1`.`pr1_compras` (`idCompra`)

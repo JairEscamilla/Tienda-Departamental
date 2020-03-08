@@ -106,3 +106,7 @@ INSERT INTO pr1_devoluciones(idCompra, idProductoDevuelto, comentarioDevolucion)
 INSERT INTO pr1_devoluciones(idCompra, idProductoDevuelto, comentarioDevolucion) VALUES(2, 45, "No me gustó el producto");
 INSERT INTO pr1_devoluciones(idCompra, idProductoDevuelto, comentarioDevolucion) VALUES(5, 13, "Este producto no cumplió con mis expectativas.");
 INSERT INTO pr1_devoluciones(idCompra, idProductoDevuelto, comentarioDevolucion) VALUES(7, 12, "NO me gustó el producto");
+
+/* Insertando cancelación */
+INSERT INTO pr1_cancelacion(comentarioCancelacion, idCompra) VALUES("Compré por error", 3);
+INSERT INTO pr1_cancelacion(comentarioCancelacion, idCompra) VALUES("No pude realizar el pago", 7);
