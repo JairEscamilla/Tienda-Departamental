@@ -180,7 +180,6 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `practica1`.`pr1_compras_productos` (
   `pr1_compras_idCompra` INT NOT NULL,
   `pr1_productos_idProducto` INT NOT NULL,
-  PRIMARY KEY (`pr1_compras_idCompra`, `pr1_productos_idProducto`),
   CONSTRAINT `fk_pr1_compras_has_pr1_productos_pr1_compras1`
     FOREIGN KEY (`pr1_compras_idCompra`)
     REFERENCES `practica1`.`pr1_compras` (`idCompra`)

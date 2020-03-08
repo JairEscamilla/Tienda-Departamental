@@ -44,3 +44,6 @@ INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, com
 INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Ulises5", 17, "Me ha sido de mucha utilidad");
 INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Ulises5", 6, "Funciona de maravilla");
 INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Jair1", 14, "No me gustó mucho, pero cumple con su objetivo");
+
+
+/* Insertando compras */
