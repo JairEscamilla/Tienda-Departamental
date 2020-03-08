@@ -57,23 +57,41 @@ LEFT JOIN pr1_compras_productos pcp ON com.idCompra = pcp.pr1_compras_idCompra
 LEFT JOIN pr1_productos prod ON pcp.pr1_productos_idProducto = prod.idProducto
 GROUP BY prod.idProducto ORDER BY idCompra;
 
-/* 6 */
-SELECT 
-    idAsesor, CONCAT(nombre, apPaterno, apMaterno)
-FROM pr1_asesores
-LEFT JOIN quejas USING(idAsesor) 
-WHERE status = True;
+/* 6 PREGUNTAR POR ESTE TAMBIEN */
+    SELECT 
+        idAsesor, CONCAT(nombre, " ", apPaterno, " ", apMaterno) 'Asesor que ha resuelto dudas'
+    FROM pr1_asesores ases
+    LEFT JOIN pr1_quejas quej ON ases.idAsesor = quej.pr1_asesores_idAsesor  
+    WHERE status = True;
 
 /* 7 */
 SELECT
-    idAsesor, CONCAT(nombre, apPaterno, apMaterno)
-FROM pr1_asesores
-    LEFT JOIN quejas USING(idAsesor) 
+    idAsesor, CONCAT(nombre, " ", apPaterno, " ", apMaterno) 'Asesor que tiene casos abiertos'
+FROM pr1_asesores ases
+LEFT JOIN pr1_quejas quej ON ases.idAsesor = quej.pr1_asesores_idAsesor   
 WHERE status = False;
 
-/* 8  PENDIENTE POR TABLA DE COMENTARIOS*/
+/* 8  PREGUNTAR POR ESTE*/
+delimiter $
+    CREATE PROCEDURE productosDeCategoria(categoria INT)
+    BEGIN 
+        SELECT nombreProducto Nombre, descripcion, comentario
+        FROM pr1_productos prod
+        LEFT JOIN pr1_categorias_a_Productos cp ON prod.idProducto = cp.pr1_productos_idProducto
+        LEFT JOIN pr1_comentarios com ON com.pr1_productos_idProducto = prod.idProducto
+        WHERE cp.pr1_categorias_productos_idCategoriap = categoria;
+    END $
+delimiter ;
+/* 9 PREGUNTAR SI ESTE SE PUEDE HACER EN 3 QUERYS */
+SELECT
+    COUNT(DISTINCT can.idCancelacion) Cancelaciones, COUNT(DISTINCT dev.idDevolucion) Devoluciones, nombreProducto 'Producto más devuelto'
+FROM pr1_cancelacion can, pr1_devoluciones dev, pr1_productos prod WHERE prod.idProducto = (
+    SELECT 
+        idProductoDevuelto
+    FROM pr1_devoluciones GROUP BY idProductoDevuelto ORDER BY COUNT(idProductoDevuelto) DESC LIMIT 1
+);
 
-/* 9 PENDIENTE POR STATUS DE LAS COMPRAS */
+
 
 /* 10 */
 SELECT 
