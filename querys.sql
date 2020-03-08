@@ -93,9 +93,10 @@ FROM pr1_cancelacion can, pr1_devoluciones dev, pr1_productos prod WHERE prod.id
 
 
 
-/* 10 */
+/* 10 Preguntar si este va bien */
 SELECT 
-    username Username, nombre Nombre, apPaterno ApellidoPaterno, direccionEnvioFactura
-FROM pr1_clientes;
+    username Username, CONCAT(nombre, " ", apPaterno, " ", apMaterno) Cliente, direccionEnvio, codigoPostal, RFC, numeroTarjeta, fechaVencimiento
+FROM pr1_clientes
+LEFT JOIN pr1_tarjetas USING(username);
 
 /* PROCEDIMIENTO */
