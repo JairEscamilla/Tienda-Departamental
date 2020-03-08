@@ -82,7 +82,7 @@ delimiter $
         WHERE cp.pr1_categorias_productos_idCategoriap = categoria;
     END $
 delimiter ;
-/* 9 PREGUNTAR SI ESTE SE PUEDE HACER EN 3 QUERYS */
+/* 9 */
 SELECT
     COUNT(DISTINCT can.idCancelacion) Cancelaciones, COUNT(DISTINCT dev.idDevolucion) Devoluciones, nombreProducto 'Producto más devuelto'
 FROM pr1_cancelacion can, pr1_devoluciones dev, pr1_productos prod WHERE prod.idProducto = (
