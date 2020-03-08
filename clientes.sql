@@ -46,4 +46,11 @@ INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, com
 INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Jair1", 14, "No me gustó mucho, pero cumple con su objetivo");
 
 
+/* Insertando tipos de pago */
+INSERT INTO pr1_tipo_pago(idTipoPago, TipoDePago) VALUES(1, "Tarjeta de crédito");
+INSERT INTO pr1_tipo_pago(idTipoPago, TipoDePago) VALUES(2, "Depósito bancario");
+INSERT INTO pr1_tipo_pago(idTipoPago, TipoDePago) VALUES(3, "Transferencia electrónica");
+INSERT INTO pr1_tipo_pago(idTipoPago, TipoDePago) VALUES(4, "Pago en tiendas de conveniencia");
+
 /* Insertando compras */
+

@@ -37,7 +37,7 @@ ENGINE = InnoDB;
 -- Table `practica1`.`pr1_tipo_pago`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `practica1`.`pr1_tipo_pago` (
-  `idTipoPago` INT NOT NULL,
+  `idTipoPago` INT NOT NULL AUTO_INCREMENT,
   `TipoDePago` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`idTipoPago`))
 ENGINE = InnoDB;
@@ -160,6 +160,7 @@ CREATE TABLE IF NOT EXISTS `practica1`.`pr1_compras` (
   `totalPagar` INT NULL,
   `idTipoPago` INT NOT NULL,
   `user` VARCHAR(30),
+  `status` BOOLEAN NOT NULL, 
   PRIMARY KEY (`idCompra`),
   CONSTRAINT `idTipoPago`
     FOREIGN KEY (`idTipoPago`)
