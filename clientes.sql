@@ -3,6 +3,7 @@ INSERT INTO pr1_clientes(username, password, direccionEnvio, idCategoria, nombre
 INSERT INTO pr1_clientes(username, password, direccionEnvio, idCategoria, nombre, apPaterno, apMaterno, fechaNac, direccionFacturacion, RFC, codigoPostal) VALUES ("Cesar3", "fido123", "Direccion prueba 3", 3, "Cesar", "Arellano", "Velazquez", '2000-05-08', "Direccion facturacion 3", "GAFJ810702NA3", "07283");
 INSERT INTO pr1_clientes(username, password, direccionEnvio, idCategoria, nombre, apPaterno, apMaterno, fechaNac, direccionFacturacion, RFC, codigoPostal) VALUES ("Raul4", "ruls123", "Direccion prueba 4", 4, "Raul", "Gonzalez", "Portillo", '2000-06-22', "Direccion facturacion 4", "GAFJ810702NA5", "07284");
 INSERT INTO pr1_clientes(username, password, direccionEnvio, idCategoria, nombre, apPaterno, apMaterno, fechaNac, direccionFacturacion, RFC, codigoPostal) VALUES ("Ulises5", "musk123", "Direccion prueba 5", 1, "Ulises", "Magaña", "Estrada", '2000-11-22', "Direccion facturacion 5", "GAFJ810702NA5", "07285");
+INSERT INTO pr1_clientes(username, password, direccionEnvio, idCategoria, nombre, apPaterno, apMaterno, fechaNac, direccionFacturacion, RFC, codigoPostal) VALUES ("Carlos6", "cars123", "Direccion prueba 6", 1, "Carlos", "Perez", "Mendez", '2000-01-22', "Direccion facturacion 6", "GAFJ8132002NA5", "07286");
 
 /* Insertando las tarjetas */
 INSERT INTO pr1_tarjetas(numeroTarjeta, fechaVencimiento, username) VALUES("1234567891023456", '2022-06-14', "Jair1");
@@ -55,8 +56,10 @@ INSERT INTO pr1_tipo_pago(idTipoPago, TipoDePago) VALUES(4, "Pago en tiendas de 
 /* Insertando compras */
 INSERT INTO pr1_compras(timestamp, totalPagar, idTipoPago, user, status) VALUES('2020-01-15', 1500, 1, "Jair1", True);
 INSERT INTO pr1_compras(timestamp, totalPagar, idTipoPago, user, status) VALUES('2020-02-14', 500, 1, "Jair1", True);
+INSERT INTO pr1_compras(timestamp, totalPagar, idTipoPago, user, status) VALUES('2020-03-01', 500, 1, "Jair1", True);
 
 INSERT INTO pr1_compras(timestamp, totalPagar, idTipoPago, user, status) VALUES('2020-03-12', 700, 2, "Gaby2", False);
+INSERT INTO pr1_compras(timestamp, totalPagar, idTipoPago, user, status) VALUES('2020-02-09', 600, 2, "Gaby2", True);
 INSERT INTO pr1_compras(timestamp, totalPagar, idTipoPago, user, status) VALUES('2020-02-09', 600, 2, "Gaby2", True);
 
 INSERT INTO pr1_compras(timestamp, totalPagar, idTipoPago, user, status) VALUES('2020-01-06', 1700, 2, "Cesar3", True);
@@ -77,7 +80,6 @@ INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto
 
 INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(3, 2);
 INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(3, 3);
-INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(3, 4);
 
 INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(4, 5);
 INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(4, 13);
@@ -98,6 +100,14 @@ INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto
 INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(8, 21);
 INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(8, 10);
 INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(8, 14);
+
+INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(9, 21);
+INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(9, 10);
+INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(9, 14);
+
+INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(10, 21);
+INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(10, 10);
+INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(10, 14);
 
 /* Insertando devoluciones */
 INSERT INTO pr1_devoluciones(idCompra, idProductoDevuelto, comentarioDevolucion) VALUES(1, 1, "Fallas en el producto");
