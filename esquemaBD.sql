@@ -268,7 +268,7 @@ ENGINE = InnoDB;
 -- Table `practica1`.`pr1_comentarios`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `practica1`.`pr1_comentarios` (
-  `idComentario` VARCHAR(45) NOT NULL,
+  `idComentario` INT NOT NULL AUTO_INCREMENT,
   `pr1_clientes_username` VARCHAR(30) NOT NULL,
   `pr1_productos_idProducto` INT NOT NULL,
   `comentario` VARCHAR(50) NOT NULL,

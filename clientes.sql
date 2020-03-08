@@ -28,3 +28,19 @@ INSERT INTO pr1_categoriasClientes_beneficios(pr1_categorias_clientes_idCategori
 INSERT INTO pr1_categoriasClientes_beneficios(pr1_categorias_clientes_idCategoria, pr1_tipo_beneficio_idBeneficio) VALUES(3, 3);
 INSERT INTO pr1_categoriasClientes_beneficios(pr1_categorias_clientes_idCategoria, pr1_tipo_beneficio_idBeneficio) VALUES(4, 2);
 INSERT INTO pr1_categoriasClientes_beneficios(pr1_categorias_clientes_idCategoria, pr1_tipo_beneficio_idBeneficio) VALUES(4, 3);
+
+/* Insertando los comentarios de los clientes a los productos */
+INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Jair1", 4, "Me gusto mucho este producto");
+INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Gaby2", 1, "Un excelente producto");
+INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Cesar3", 10, "He tenido problemas en su uso");
+INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Ulises5", 20, "Funciona de maravilla");
+INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Raul4", 20, "No me gustó su funcionamiento");
+INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Jair1", 15, "Es una muy buena pelicula");
+INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Gaby2", 9, "Me gustó mucho el diseño de la computadora");
+INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Jair1", 1, "Me ha servido mucho para hacer ejercicio");
+INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Raul4", 21, "Esta hecho de buenos materiales");
+INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Raul4", 14, "Muy buen juego");
+INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Cesar3", 7, "Me ha gustado mucho");
+INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Ulises5", 17, "Me ha sido de mucha utilidad");
+INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Ulises5", 6, "Funciona de maravilla");
+INSERT INTO pr1_comentarios(pr1_clientes_username, pr1_productos_idProducto, comentario) VALUES("Jair1", 14, "No me gustó mucho, pero cumple con su objetivo");
