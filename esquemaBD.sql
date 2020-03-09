@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `ic18aeh`.`pr1_productos` (
   `idProducto` INT NOT NULL AUTO_INCREMENT,
   `nombreProducto` VARCHAR(50) NOT NULL,
   `descripcion` VARCHAR(250) NOT NULL,
-  `precio` INT NOT NULL,
+  `precio` DECIMAL(10, 2) NOT NULL,
   `stock` INT NULL,
   `costoEnvio` INT NULL,
   PRIMARY KEY (`idProducto`))
@@ -157,7 +157,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `ic18aeh`.`pr1_compras` (
   `idCompra` INT NOT NULL AUTO_INCREMENT,
   `timestamp` DATETIME NOT NULL,
-  `totalPagar` INT NULL,
+  `totalPagar` DECIMAL(10, 2) NULL,
   `idTipoPago` INT NOT NULL,
   `user` VARCHAR(30),
   `status` BOOLEAN NOT NULL, 
