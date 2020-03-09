@@ -12,9 +12,9 @@
 
 /* 2 PREGUNTAR POR FACTURACION */
 DELIMITER $
-    CREATE PROCEDURE facturacionMes(anio INT, mes INT, username VARCHAR(30), OUT FacturacionTotal DECIMAL(5, 2))
+    CREATE PROCEDURE facturacionMes(anio INT, mes INT, username VARCHAR(30), OUT FacturacionTotal DECIMAL(10, 2))
     BEGIN
-        DECLARE total, aux DECIMAL(5, 2);
+        DECLARE total, aux DECIMAL(10, 2);
         DECLARE salida INT;
         DECLARE curFacturacion CURSOR FOR SELECT totalPagar FROM pr1_compras WHERE user = username AND MONTH(timestamp) = mes AND YEAR(timestamp) = anio;
         DECLARE CONTINUE HANDLER FOR NOT FOUND SET salida = 1;
@@ -27,8 +27,8 @@ DELIMITER $
                 LEAVE curFact;
             END IF;
             SET total = total + aux;
-            UNTIL salida = Fact;
-        END REPEAT cur
+            UNTIL salida = 1
+        END REPEAT curFact;
         CLOSE curFacturacion;
         SET FacturacionTotal = total;
     END $
@@ -82,6 +82,9 @@ delimiter $
         WHERE cp.pr1_categorias_productos_idCategoriap = categoria;
     END $
 delimiter ;
+
+
+
 /* 9 */
 SELECT
     COUNT(DISTINCT can.idCancelacion) Cancelaciones, COUNT(DISTINCT dev.idDevolucion) Devoluciones, nombreProducto 'Producto más devuelto'
@@ -101,7 +104,7 @@ LEFT JOIN pr1_tarjetas USING(username);
 
 /* PROCEDIMIENTO */
 delimiter $
-    CREATE DEFINER=`root`@`localhost` PROCEDURE `hacerCompra`(cliente VARCHAR(30), Producto INT, cantidadProductos INT, OUT totalVenta DECIMAL(10, 2), OUT pagoEnvio DECIMAL(10, 2))
+    CREATE PROCEDURE `hacerCompra`(cliente VARCHAR(30), Producto INT, cantidadProductos INT, OUT totalVenta DECIMAL(10, 2), OUT pagoEnvio DECIMAL(10, 2))
 BEGIN 
         DECLARE numProducts, prec, cEnv, descuento, nuevoStock INT;
         DECLARE pagoTotal, dineroDescontado DECIMAL(10, 2);
