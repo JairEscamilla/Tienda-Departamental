@@ -1,6 +1,6 @@
 /* 1 */
     SELECT 
-        username Username, CONCAT(nombre, " ", apPaterno, " ", apMaterno) Cliente
+        username Username, CONCAT(nombre, " ", apPaterno, " ", apMaterno) "Clientes que mas han comprado"
     FROM pr1_clientes cl
     LEFT JOIN pr1_compras com ON cl.username = com.user GROUP BY cl.username HAVING COUNT(com.user) = (
         SELECT 
@@ -27,8 +27,8 @@ DELIMITER $
                 LEAVE curFact;
             END IF;
             SET total = total + aux;
-            UNTIL salida = 1
-        END REPEAT curFact;
+            UNTIL salida = Fact;
+        END REPEAT cur
         CLOSE curFacturacion;
         SET FacturacionTotal = total;
     END $
