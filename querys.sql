@@ -49,13 +49,17 @@ LEFT JOIN pr1_compras_productos comprod ON com.idCompra = comprod.pr1_compras_id
 LEFT JOIN pr1_productos prod ON comprod.pr1_productos_idProducto = prod.idProducto WHERE prod.precio > 1000 GROUP BY cl.username ORDER BY cl.apPaterno, cl.apMaterno;
 
 /* 5 PENDIENTE HAY QUE PREGUNTAR POR ESTE QUERY*/
-SELECT 
-    com.idCompra, CONCAT(cl.nombre, " ", cl.apPaterno, " ",  cl.apMaterno) Cliente, COUNT(pcp.pr1_compras_idCompra) 'Numero de productos', prod.descripcion
+
+
+
+SELECT idCompra, CONCAT(nombre, " ", apPaterno, " ", apMaterno) Cliente, COUNT(pcp.pr1_productos_idProducto) AS "Numero de Productos", descripcion Descripcion
 FROM pr1_compras com
-LEFT JOIN pr1_clientes cl ON com.user = cl.username
 LEFT JOIN pr1_compras_productos pcp ON com.idCompra = pcp.pr1_compras_idCompra
-LEFT JOIN pr1_productos prod ON pcp.pr1_productos_idProducto = prod.idProducto
-GROUP BY prod.idProducto ORDER BY idCompra;
+LEFT JOIN pr1_productos pr ON pr.idProducto = pcp.pr1_productos_idProducto
+LEFT JOIN pr1_clientes cl ON cl.username = com.user
+GROUP BY idProducto, idCompra ORDER BY idCompra;
+
+
 
 /* 6 PREGUNTAR POR ESTE TAMBIEN */
     SELECT 
