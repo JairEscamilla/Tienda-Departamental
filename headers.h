@@ -16,4 +16,5 @@ typedef struct defConexion{
 void menu();
 void menuAltas();
 void insertarClientes(Conexion con);
+void completarQuery(char datos[13][100], char query[]);
 

@@ -8,56 +8,60 @@
 
 /* Funcione que inserta clientes */
 void insertarClientes(Conexion con){
-    char usr[30], pwd[30], direccionEnvio[70], idCategoria[4], nombre[50], apPaterno[50], apMaterno[50];
-    char diaNac[3], mesNac[3], anioNac[3], dirFact[70], rfc[16], cp[50];
-    system("clear");
+    char query[800] = "INSERT INTO pr1_clientes(username, password, direccionEnvio, idCategoria, nombre, apPaterno, apMaterno, direccionFacturacion, RFC, codigoPostal, fechaNac) VALUES(";
+    char campos[13][100] = {"username", "password", "direccion de envio", "id de categoria de cliente", "nombre", "apellido paterno", "apellido materno", "dia de nacimiento", "mes de nacimiento", "anio de nacimiento", "direccion de facturacion", "RFC", "codigo postal"};
+    char datos[13][100];
     mysql_init(&con.mysql);
     if(!mysql_real_connect(&con.mysql, con.server, con.user, con.password, con.db, 0, NULL, 0)){
-        fprintf(stderr, "Ha ocurrido un error al conectarse a la base de datos: %s\n", mysql_error(&(con.mysql)));
+        fprintf(stderr, "Ha ocurrido un error al conectarse a la base de datos: %s\n", mysql_error(&con.mysql));
+        getchar();
         return;
     }
+    if(mysql_select_db(&con.mysql, con.db)){
+        fprintf(stderr, "Ha ocurrido un error al conectarse a la base de datos %s\n", mysql_error(&con.mysql));
+        getchar();
+        return;
+    }
+    system("clear");
     puts("\t\t\tINSERTANDO CLIENTES\n");
-    /* Leyendo datos del usuario */
-    printf("Ingresar username-> ");
-    fgets(usr, 30, stdin);
-    fgets(usr, 30, stdin);
-    usr[strlen(usr) - 1] = '\0';
-    printf("Ingresar password-> ");
-    fgets(pwd, 30, stdin);
-    pwd[strlen(pwd) - 1] = '\0';
-    printf("Ingresar direccion de envio-> ");
-    fgets(direccionEnvio, 70, stdin);
-    direccionEnvio[strlen(direccionEnvio) - 1] = '\0';
-    printf("Ingresar el id de la categoria del cliente-> ");
-    fgets(idCategoria, 4, stdin);
-    idCategoria[strlen(idCategoria) - 1] = '\0';
-    printf("Ingresar el nombre del cliente-> ");
-    fgets(nombre, 50, stdin);
-    nombre[strlen(nombre) - 1] = '\0';
-    printf("Ingresar el apellido paterno del cliente-> ");
-    fgets(apPaterno, 50, stdin);
-    apPaterno[strlen(apPaterno) - 1] = '\0';
-    printf("Ingresar el apellido materno del cliente-> ");
-    fgets(apMaterno, 50, stdin);
-    apMaterno[strlen(apMaterno) - 1] = '\0';
-    printf("Ingresar el dia de nacimiento del cliente-> ");
-    fgets(diaNac, 50, stdin);
-    diaNac[strlen(diaNac) - 1] = '\0';
-    printf("Ingresar el mes de nacimiento del cliente-> ");
-    fgets(mesNac, 50, stdin);
-    mesNac[strlen(mesNac) - 1] = '\0';
-    printf("Ingresar el anio de nacimiento del cliente-> ");
-    fgets(anioNac, 50, stdin);
-    anioNac[strlen(anioNac) - 1] = '\0';
-    printf("Ingresar la direccion de facturacion-> ");
-    fgets(dirFact, 50, stdin);
-    dirFact[strlen(dirFact) - 1] = '\0';
-    printf("Ingresar el RFC-> ");
-    fgets(rfc, 50, stdin);
-    rfc[strlen(rfc) - 1] = '\0';
-    printf("Ingresar el codigo postal-> ");
-    fgets(cp, 50, stdin);
-    cp[strlen(cp) - 1] = '\0';
-
+    setbuf(stdin, NULL);
+    for(int i = 0; i < 13; i++){
+        printf("Insertar %s-> ", campos[i]);
+        fgets(datos[i], 100, stdin);
+        datos[i][strlen(datos[i]) - 1] = '\0';
+    }
+    completarQuery(datos, query);
+    // Ejecutamos el query
+    if (mysql_query(&con.mysql, query)){
+        fprintf(stderr, "Alguno de los datos ingresados son incorrectos: %s", mysql_error(&con.mysql));
+        getchar();
+        return;
+    }
     mysql_close(&con.mysql);
+    printf("Se ha insertado correctamente el cliente\nPresione enter para continuar... ");
+    getchar();
+}
+
+void completarQuery(char datos[13][100], char query[]){
+    char fechaNacimiento[20];
+    strcpy(fechaNacimiento, datos[9]);
+    strcat(fechaNacimiento, "-");
+    strcat(fechaNacimiento, datos[8]);
+    strcat(fechaNacimiento, "-");
+    strcat(fechaNacimiento, datos[7]);
+    for(int i = 0; i < 13; i++){
+       if(i != 7 && i != 8 && i != 9){
+           if(i != 3){
+                strcat(query, "'");
+                strcat(query, datos[i]);
+                strcat(query, "'");
+           }else  
+                strcat(query, datos[i]);
+            strcat(query, ", ");
+       }
+    }
+    strcat(query, "'");
+    strcat(query, fechaNacimiento);
+    strcat(query, "'");
+    strcat(query, ");");
 }
