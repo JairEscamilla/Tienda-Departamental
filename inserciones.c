@@ -34,7 +34,7 @@ void insertarClientes(Conexion con){
     // Ejecutamos el query
     if (mysql_query(&con.mysql, query)){
         fprintf(stderr, "Alguno de los datos ingresados son incorrectos: %s", mysql_error(&con.mysql));
-        getchar();
+        getchar(); 
         return;
     }
     mysql_close(&con.mysql);

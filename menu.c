@@ -21,7 +21,7 @@ void menuAltas(){
     system("clear");
     puts("\t\t\tMENÚ ALTAS\n");
     puts("\t1.- Clientes.");
-    puts("\t2.- Aseores.");
+    puts("\t2.- Asesores.");
     puts("\t3.- Productos.");
     puts("\t4.- Categorias.");
     puts("\t5.- Departamentos.");
