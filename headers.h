@@ -10,3 +10,4 @@ void llenarCampos(char camposBD[7][150], int numberFields, char datos[7][150], c
 void menuActualizaciones(Conexion con);
 void actualizar(char* tabla, int opcion, Conexion con);
 void ejecutarQueryActualizacion(char* query, Conexion con);
+void realizarCompra(Conexion con);

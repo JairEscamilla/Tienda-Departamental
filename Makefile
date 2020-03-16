@@ -1,5 +1,5 @@
-main.out: main.o menu.o inserciones.o actualizaciones.o
-	gcc -o main.out main.o menu.o inserciones.o actualizaciones.o -lnsl -lm -lz -lmysqlclient
+main.out: main.o menu.o inserciones.o actualizaciones.o compra.o
+	gcc -o main.out main.o menu.o inserciones.o actualizaciones.o compra.o -lnsl -lm -lz -lmysqlclient
 
 main.o: main.c headers.h conexion.h
 	gcc -c main.c 
@@ -13,6 +13,9 @@ inserciones.o: inserciones.c
 
 actualizaciones.o: actualizaciones.c 
 	gcc -c actualizaciones.c
+
+compra.o: compra.c 
+	gcc -c compra.c
 
 clean: 
 	rm -f *.o
