@@ -53,3 +53,10 @@ void menuAltas(Conexion con){
     if (opcionSubMenu == 5)
         insertarDatos(campos[3], 1, "pr1_departamentos", camposDB[3], con);
 }
+
+void menuActualizaciones(Conexion con){
+    setbuf(stdin, NULL); // Limpiando buffer
+    puts("Comenzando a actualizar");
+    actualizar();
+    getchar();
+}

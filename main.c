@@ -17,7 +17,7 @@ int main(){
     strcpy(con.user, "root");
     strcpy(con.password, "#Password123");
     strcpy(con.db, "practica1");
-    void (*funcionesMenu[5])(Conexion con) = {menuAltas};
+    void (*funcionesMenu[5])(Conexion con) = {menuAltas, NULL, menuActualizaciones};
     int opcion;
     do{
         menu();
