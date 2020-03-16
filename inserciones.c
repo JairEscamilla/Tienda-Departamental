@@ -90,7 +90,9 @@ void llenarCampos(char camposBD[7][150], int numberFields, char datos[7][150], c
     }
     strcat(query, ") VALUES (");
     for(int i = 0; i < numberFields; i++){
+        strcat(query, "'");
         strcat(query, datos[i]);
+        strcat(query, "'");
         if(i != numberFields - 1)
             strcat(query, ", ");
     }

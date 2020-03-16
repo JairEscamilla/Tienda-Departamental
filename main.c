@@ -41,6 +41,13 @@ int main(){
                 insertarClientes(con);
             if(opcionSubMenu == 2)
                 insertarDatos(campos[0], 3, "pr1_asesores", camposDB[0]);
+            if(opcionSubMenu == 3)
+                insertarDatos(campos[1], 5, "pr1_productos", camposDB[1]);
+            if(opcionSubMenu == 4)
+                insertarDatos(campos[2], 3, "pr1_categorias_productos", camposDB[2]);
+            if(opcionSubMenu == 5)
+                insertarDatos(campos[3], 1, "pr1_departamentos", camposDB[3]);
+            
         }
     }while(opcion != 6);
     return 0;
