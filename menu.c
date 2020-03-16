@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h> 
 #include <string.h>
+#include "headers.h"
 /* Desarrollo de funciones */
 /* Menu principal */
 void menu(){
@@ -17,7 +18,20 @@ void menu(){
 }
 
 /* Menu de altas */
-void menuAltas(){
+void menuAltas(Conexion con){
+    int opcionSubMenu;
+    char campos[5][7][150] = {
+        {"nombre del asesor", "apellido materno", "apellido paterno"},
+        {"nombre del producto", "descripcion", "precio", "stock", "costo de envio"},
+        {"nombre de la categoria", "descripcion de la categoria", "id del departamento al que pertenece"},
+        {"nombre del departamento"}
+    };
+    char camposDB[5][7][150] = {
+        {"nombre", "apPaterno", "apMaterno"},
+        {"nombreProducto", "descripcion", "precio", "stock", "costoEnvio"},
+        {"nombreCategoria", "descripcionCategoria", "idDepartamento"},
+        {"nombreDepartamento"}
+    };
     system("clear");
     puts("\t\t\tMENÚ ALTAS\n");
     puts("\t1.- Clientes.");
@@ -27,4 +41,15 @@ void menuAltas(){
     puts("\t5.- Departamentos.");
     puts("\t6.- Volver.");
     printf("\nIngresar opcion-> ");
+    scanf(" %d", &opcionSubMenu);
+    if (opcionSubMenu == 1)
+        insertarClientes(con);
+    if (opcionSubMenu == 2)
+        insertarDatos(campos[0], 3, "pr1_asesores", camposDB[0]);
+    if (opcionSubMenu == 3)
+        insertarDatos(campos[1], 5, "pr1_productos", camposDB[1]);
+    if (opcionSubMenu == 4)
+        insertarDatos(campos[2], 3, "pr1_categorias_productos", camposDB[2]);
+    if (opcionSubMenu == 5)
+        insertarDatos(campos[3], 1, "pr1_departamentos", camposDB[3]);
 }
