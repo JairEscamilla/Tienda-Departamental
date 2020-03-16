@@ -69,6 +69,6 @@ void menuActualizaciones(Conexion con){
     printf("\nIngresar opcion-> ");
     scanf("%d", &subMenuOpcion);
     if(subMenuOpcion < 6 && subMenuOpcion > 0)
-        actualizar(tablas[subMenuOpcion-1], subMenuOpcion);
+        actualizar(tablas[subMenuOpcion-1], subMenuOpcion, con);
     getchar();
 }
