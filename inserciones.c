@@ -65,3 +65,19 @@ void completarQuery(char datos[13][100], char query[]){
     strcat(query, "'");
     strcat(query, ");");
 }
+
+void insertarDatos(char campos[7][150], int numberFields, char* tabla){
+    char datos[7][150];
+    char query[700] = "INSERT INTO ";
+    system("clear");
+    setbuf(stdin, NULL);
+    strcat(query, tabla);
+    strcat(query, "()");
+    puts(query);
+    for(int i = 0; i < numberFields; i++){
+        printf("Insertar %s-> ", campos[i]);
+        fgets(datos[i], 150, stdin);
+        datos[i][strlen(datos[i]) - 1] = '\0';
+    }
+    getchar();
+}

@@ -17,4 +17,5 @@ void menu();
 void menuAltas();
 void insertarClientes(Conexion con);
 void completarQuery(char datos[13][100], char query[]);
+void insertarDatos(char campos[7][150], int numberFields, char* tabla);
 
