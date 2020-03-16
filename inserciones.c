@@ -13,12 +13,12 @@ void insertarClientes(Conexion con){
     char datos[13][100];
     mysql_init(&con.mysql);
     if(!mysql_real_connect(&con.mysql, con.server, con.user, con.password, con.db, 0, NULL, 0)){
-        fprintf(stderr, "Ha ocurrido un error al conectarse a la base de datos: %s\n", mysql_error(&con.mysql));
+        fprintf(stderr, "Ha ocurrido un error al conectarse a la base de datos: %s\n\nPresione enter para continuar ...", mysql_error(&con.mysql));
         getchar();
         return;
     }
     if(mysql_select_db(&con.mysql, con.db)){
-        fprintf(stderr, "Ha ocurrido un error al conectarse a la base de datos %s\n", mysql_error(&con.mysql));
+        fprintf(stderr, "Ha ocurrido un error al conectarse a la base de datos %s\n\nPresione enter para continuar ...", mysql_error(&con.mysql));
         getchar();
         return;
     }
@@ -33,7 +33,7 @@ void insertarClientes(Conexion con){
     completarQuery(datos, query);
     // Ejecutamos el query
     if (mysql_query(&con.mysql, query)){
-        fprintf(stderr, "Alguno de los datos ingresados son incorrectos: %s", mysql_error(&con.mysql));
+        fprintf(stderr, "Alguno de los datos ingresados son incorrectos: %s\nPresione enter para continuar ...", mysql_error(&con.mysql));
         getchar(); 
         return;
     }
