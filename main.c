@@ -25,6 +25,12 @@ int main(){
         {"nombre de la categoria", "descripcion de la categoria", "id del departamento al que pertenece"},
         {"nombre del departamento"}
     };
+    char camposDB[5][7][150] = {
+        {"nombre", "apPaterno", "apMaterno"},
+        {"nombreProducto", "descripcion", "precio", "stock", "costoEnvio"},
+        {"nombreCategoria", "descripcionCategoria", "idDepartamento"},
+        {"nombreDepartamento"}
+    };
     do{
         menu();
         scanf(" %d", &opcion);
@@ -34,7 +40,7 @@ int main(){
             if(opcionSubMenu == 1)
                 insertarClientes(con);
             if(opcionSubMenu == 2)
-                insertarDatos(campos[0], 3, "pr1_asesores");
+                insertarDatos(campos[0], 3, "pr1_asesores", camposDB[0]);
         }
     }while(opcion != 6);
     return 0;
