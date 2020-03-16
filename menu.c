@@ -55,8 +55,20 @@ void menuAltas(Conexion con){
 }
 
 void menuActualizaciones(Conexion con){
+    int subMenuOpcion;
+    char tablas[5][100] = {"pr1_clientes", "pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos"};
+    system("clear");
     setbuf(stdin, NULL); // Limpiando buffer
-    puts("Comenzando a actualizar");
-    actualizar();
+    puts("\t\t\tMENU ACTUALIZACIONES\n");
+    puts("\t1.- Clientes.");
+    puts("\t2.- Asesores.");
+    puts("\t3.- Productos.");
+    puts("\t4.- Categorias.");
+    puts("\t5.- Departamentos.");
+    puts("\t6.- Volver.");
+    printf("\nIngresar opcion-> ");
+    scanf("%d", &subMenuOpcion);
+    if(subMenuOpcion < 6 && subMenuOpcion > 0)
+        actualizar(tablas[subMenuOpcion-1], subMenuOpcion);
     getchar();
 }
