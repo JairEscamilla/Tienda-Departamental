@@ -38,26 +38,26 @@ void realizarCompra(Conexion con){
         strcat(query, ", ");
         strcat(query, cantidadProductos);
         strcat(query, ", @totalVenta, @pagoEnvio);");
-        /*if (mysql_query(&con.mysql, query)){
+        if (mysql_query(&con.mysql, query)){
             printf("Error al ejecutar el query %s\n", mysql_error(&con.mysql));
             getchar();
             return;
-        }*/
-        /*if (mysql_query(&con.mysql, "SELECT @totalVenta, @pagoEnvio;")){
+        }
+        if (mysql_query(&con.mysql, "SELECT @totalVenta, @pagoEnvio;")){
             printf("Error al ejecutar el query %s\n", mysql_error(&con.mysql));
             getchar();
             return;
-        }*/
-        /*if (!(con.res = mysql_store_result(&con.mysql))){
+        }
+        if (!(con.res = mysql_store_result(&con.mysql))){
             printf("Error al obtener el query: %s\n", mysql_error(&con.mysql));
             getchar();
             return;
-        }   */
-        /*con.row = mysql_fetch_row(con.res);
+        }
+        con.row = mysql_fetch_row(con.res);
         if(con.row[0] != NULL && con.row[1] != NULL){
             totalCompra += atof(con.row[0]);
             totalEnvio += atof(con.row[1]);
-        }*/
+        }
     } while (strcmp(idProducto, "-1"));
     
     printf("Total de la compra: %f\nTotal del envio: %f\n", totalCompra, totalEnvio);
