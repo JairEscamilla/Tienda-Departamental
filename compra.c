@@ -15,8 +15,6 @@ void generarQueryCompra(char *queryAuxiliar, char* idCompra, char* idProducto){
     strcat(queryAuxiliar, ", ");
     strcat(queryAuxiliar, idProducto);
     strcat(queryAuxiliar, ");");
-    puts(queryAuxiliar);
-    getchar();
 }
 
 void realizarCompra(Conexion con){
