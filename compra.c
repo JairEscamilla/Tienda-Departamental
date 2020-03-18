@@ -64,14 +64,14 @@ void realizarCompra(Conexion con){
             return;
         }
         con.row = mysql_fetch_row(con.res);
-        if(cantidadProductos > con.row[3]){
+        if(atoi(cantidadProductos) > atoi(con.row[3])){
             printf("No se puede realizar la compra debido a que no hay productos suficientes en stock):\nPresiona enter para continuar... ");
             getchar();
             return;
         }
-        if(con.row[0] != NULL && con.row[1] != NULL){
-            totalCompra += atof(con.row[0]);
-            totalEnvio += atof(con.row[1]);
+        if(con.row[2] != NULL && con.row[4] != NULL){
+            totalCompra += atof(con.row[2]);
+            totalEnvio += atof(con.row[4]);
         }
     } while (strcmp(idProducto, "-1"));
     
