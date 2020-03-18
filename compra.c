@@ -9,8 +9,18 @@ void generarCompra(char* queryCompra, char *username, char *idTipoPago){
     strcat(queryCompra, "', 0);");
 }
 
+void generarQueryCompra(char *queryAuxiliar, char* idCompra, char* idProducto){
+    strcpy(queryAuxiliar, "INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(");
+    strcat(queryAuxiliar, idCompra);
+    strcat(queryAuxiliar, ", ");
+    strcat(queryAuxiliar, idProducto);
+    strcat(queryAuxiliar, ");");
+    puts(queryAuxiliar);
+    getchar();
+}
+
 void realizarCompra(Conexion con){
-    char username[100], idProducto[5], cantidadProductos[5], query[700], idTipoPago[5], queryCompra[700] = "INSERT INTO pr1_compras(timestamp, idTipoPago, user, status) VALUES(NOW(), ", idCompra[5];
+    char username[100], idProducto[5], cantidadProductos[5], query[700], idTipoPago[5], queryCompra[700] = "INSERT INTO pr1_compras(timestamp, idTipoPago, user, status) VALUES(NOW(), ", idCompra[5], queryAuxiliar[700];
     float totalCompra = 0, totalEnvio = 0;
     system("clear");
     printf("\t\t\tREALIZANDO COMPRA\n");
@@ -50,9 +60,6 @@ void realizarCompra(Conexion con){
             break;
         strcat(query, idProducto);
         strcat(query, ";");
-        printf("Ingresar cantidad de productos-> ");
-        fgets(cantidadProductos, 5, stdin);
-        cantidadProductos[strlen(cantidadProductos) - 1] = '\0';
         if (mysql_query(&con.mysql, query)){
             printf("Error al ejecutar el query %s\n", mysql_error(&con.mysql));
             getchar();
@@ -64,15 +71,11 @@ void realizarCompra(Conexion con){
             return;
         }
         con.row = mysql_fetch_row(con.res);
-        if(atoi(cantidadProductos) > atoi(con.row[3])){
-            printf("No se puede realizar la compra debido a que no hay productos suficientes en stock):\nPresiona enter para continuar... ");
-            getchar();
-            return;
-        }
         if(con.row[2] != NULL && con.row[4] != NULL){
             totalCompra += atof(con.row[2]);
             totalEnvio += atof(con.row[4]);
         }
+        generarQueryCompra(queryAuxiliar, idCompra, idProducto);
     } while (strcmp(idProducto, "-1"));
     
     printf("Total de la compra: %f\nTotal del envio: %f\n", totalCompra, totalEnvio);
