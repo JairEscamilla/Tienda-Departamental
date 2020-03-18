@@ -21,6 +21,7 @@ void ejecutarQueryActualizacion(char *query, Conexion con){
         printf("Se han actualizado los datos\nPresiona enter para continuar...");
         return;
     }
+    mysql_close(&con.mysql);
 }
 
 void actualizar(char *tabla, int opcion, Conexion con){

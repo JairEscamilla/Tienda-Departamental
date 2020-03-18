@@ -11,3 +11,4 @@ void menuActualizaciones(Conexion con);
 void actualizar(char* tabla, int opcion, Conexion con);
 void ejecutarQueryActualizacion(char* query, Conexion con);
 void realizarCompra(Conexion con);
+void generarCompra(char* queryCompra, char *username, char *idTipoPago);

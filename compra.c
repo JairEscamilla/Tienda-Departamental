@@ -2,8 +2,15 @@
 #include <string.h>
 #include "conexion.h"
 
+void generarCompra(char* queryCompra, char *username, char *idTipoPago){
+    strcat(queryCompra, idTipoPago);
+    strcat(queryCompra, ", '");
+    strcat(queryCompra, username);
+    strcat(queryCompra, "', 0);");
+}
+
 void realizarCompra(Conexion con){
-    char username[100], idProducto[5], cantidadProductos[5], query[700];
+    char username[100], idProducto[5], cantidadProductos[5], query[700], idTipoPago[5], queryCompra[700] = "INSERT INTO pr1_compras(timestamp, idTipoPago, user, status) VALUES(NOW(), ";
     float totalCompra = 0, totalEnvio = 0;
     system("clear");
     printf("\t\t\tREALIZANDO COMRA\n");
@@ -11,14 +18,25 @@ void realizarCompra(Conexion con){
     setbuf(stdin, NULL);
     fgets(username, 100, stdin);
     username[strlen(username) - 1] = '\0';
+    printf("Ingresar el id del tipo de pago-> ");
+    fgets(idTipoPago, 5, stdin);
+    idTipoPago[strlen(idTipoPago) - 1] = '\0';
+    generarCompra(queryCompra, username, idTipoPago);
     mysql_init(&con.mysql);
     if (!mysql_real_connect(&con.mysql, con.server, con.user, con.password, con.db, 0, NULL, 0)){
         printf("Error al conectarse: %s\n", mysql_error(&con.mysql));
+        getchar();
         return;
     }
     // Se conecta a la base de datos
     if (mysql_select_db(&con.mysql, con.db)){
         printf("Error al seleccionar la base de datos: %s", mysql_error(&con.mysql));
+        getchar();
+        return;
+    }
+    if (mysql_query(&con.mysql, queryCompra)){
+        printf("Error, no se ha podido generar la compra %s\n", mysql_error(&con.mysql));
+        getchar();
         return;
     }
     do{
@@ -63,3 +81,4 @@ void realizarCompra(Conexion con){
     printf("Total de la compra: %f\nTotal del envio: %f\n", totalCompra, totalEnvio);
     getchar();
 }
+
