@@ -10,10 +10,10 @@ void generarCompra(char* queryCompra, char *username, char *idTipoPago){
 }
 
 void realizarCompra(Conexion con){
-    char username[100], idProducto[5], cantidadProductos[5], query[700], idTipoPago[5], queryCompra[700] = "INSERT INTO pr1_compras(timestamp, idTipoPago, user, status) VALUES(NOW(), ";
+    char username[100], idProducto[5], cantidadProductos[5], query[700], idTipoPago[5], queryCompra[700] = "INSERT INTO pr1_compras(timestamp, idTipoPago, user, status) VALUES(NOW(), ", idCompra[5];
     float totalCompra = 0, totalEnvio = 0;
     system("clear");
-    printf("\t\t\tREALIZANDO COMRA\n");
+    printf("\t\t\tREALIZANDO COMPRA\n");
     printf("Ingresar el username para realizar compra-> ");
     setbuf(stdin, NULL);
     fgets(username, 100, stdin);
@@ -28,17 +28,19 @@ void realizarCompra(Conexion con){
         getchar();
         return;
     }
-    // Se conecta a la base de datos
-    if (mysql_select_db(&con.mysql, con.db)){
+    if (mysql_select_db(&con.mysql, con.db)){ // Se conecta a la base de datos
         printf("Error al seleccionar la base de datos: %s", mysql_error(&con.mysql));
         getchar();
         return;
     }
-    if (mysql_query(&con.mysql, queryCompra)){
+    if (mysql_query(&con.mysql, queryCompra) || mysql_query(&con.mysql, "SELECT idCompra FROM pr1_compras ORDER BY idCompra DESC LIMIT 1;")){
         printf("Error, no se ha podido generar la compra %s\n", mysql_error(&con.mysql));
         getchar();
         return;
     }
+    con.res = mysql_store_result(&con.mysql);
+    con.row = mysql_fetch_row(con.res);
+    strcat(idCompra, con.row[0]);
     do{
         strcpy(query, "CALL hacerCompra(");
         strcat(query, "'");
