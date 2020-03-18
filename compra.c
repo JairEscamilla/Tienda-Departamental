@@ -42,28 +42,18 @@ void realizarCompra(Conexion con){
     con.row = mysql_fetch_row(con.res);
     strcat(idCompra, con.row[0]);
     do{
-        strcpy(query, "CALL hacerCompra(");
-        strcat(query, "'");
-        strcat(query, username);
-        strcat(query, "', ");
+        strcpy(query, "SELECT idProducto, nombreProducto, precio, stock, costoEnvio FROM pr1_productos WHERE idProducto = ");
         printf("Ingresar idProducto(-1 para terminar compra)-> ");
         fgets(idProducto, 5, stdin);
         idProducto[strlen(idProducto) - 1] = '\0';
         if (!strcmp(idProducto, "-1"))
             break;
+        strcat(query, idProducto);
+        strcat(query, ";");
         printf("Ingresar cantidad de productos-> ");
         fgets(cantidadProductos, 5, stdin);
         cantidadProductos[strlen(cantidadProductos) - 1] = '\0';
-        strcat(query, idProducto);
-        strcat(query, ", ");
-        strcat(query, cantidadProductos);
-        strcat(query, ", @totalVenta, @pagoEnvio);");
         if (mysql_query(&con.mysql, query)){
-            printf("Error al ejecutar el query %s\n", mysql_error(&con.mysql));
-            getchar();
-            return;
-        }
-        if (mysql_query(&con.mysql, "SELECT @totalVenta, @pagoEnvio;")){
             printf("Error al ejecutar el query %s\n", mysql_error(&con.mysql));
             getchar();
             return;
@@ -74,6 +64,11 @@ void realizarCompra(Conexion con){
             return;
         }
         con.row = mysql_fetch_row(con.res);
+        if(cantidadProductos > con.row[3]){
+            printf("No se puede realizar la compra debido a que no hay productos suficientes en stock):\nPresiona enter para continuar... ");
+            getchar();
+            return;
+        }
         if(con.row[0] != NULL && con.row[1] != NULL){
             totalCompra += atof(con.row[0]);
             totalEnvio += atof(con.row[1]);
