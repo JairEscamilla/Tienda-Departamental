@@ -42,7 +42,7 @@ void realizarCompra(Conexion con){
         return;
     }
     if (mysql_query(&con.mysql, queryCompra) || mysql_query(&con.mysql, "SELECT idCompra FROM pr1_compras ORDER BY idCompra DESC LIMIT 1;")){
-        printf("Error, no se ha podido generar la compra %s\n", mysql_error(&con.mysql));
+        printf("Error, no se ha podido generar la compra: %s\n", mysql_error(&con.mysql));
         getchar();
         return;
     }
@@ -69,11 +69,16 @@ void realizarCompra(Conexion con){
             return;
         }
         con.row = mysql_fetch_row(con.res);
-        if(con.row[2] != NULL && con.row[4] != NULL){
+        if(con.row != NULL && con.row[2] != NULL && con.row[4] != NULL){
             totalCompra += atof(con.row[2]);
             totalEnvio += atof(con.row[4]);
         }
         generarQueryCompra(queryAuxiliar, idCompra, idProducto);
+        if(mysql_query(&con.mysql, queryAuxiliar)){
+            printf("Error al obtener el query: %s\n", mysql_error(&con.mysql));
+            getchar();
+            return;
+        }
     } while (strcmp(idProducto, "-1"));
     
     printf("Total de la compra: %f\nTotal del envio: %f\n", totalCompra, totalEnvio);
