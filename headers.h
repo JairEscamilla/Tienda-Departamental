@@ -18,6 +18,6 @@ void ejecutarQueryDesplegar(char *query, Conexion con);
 void desplegart(char *tabla, int opcion, Conexion con);
 void errorCatcher(Conexion* con);
 
-    void menuEliminar(Conexion con);
+void menuEliminar(Conexion con);
 void ejecutarQueryEliminar(char *query, Conexion con);
 void eliminard(char *tabla, int opcion, Conexion con);
