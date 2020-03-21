@@ -72,3 +72,43 @@ void menuActualizaciones(Conexion con){
         actualizar(tablas[subMenuOpcion-1], subMenuOpcion, con);
     getchar();
 }
+
+/* Menu desplegar datos */
+void menuDesplegar(Conexion con){
+    int subMenuOpcion;
+    char tablas[5][100] = {"pr1_clientes", "pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos"};
+    system("clear");
+    puts("\t\t\tMENU DESPLEGAR DATOS\n");
+    puts("\t1.- Clientes.");
+    puts("\t2.- Asesores.");
+    puts("\t3.- Productos.");
+    puts("\t4.- Categorias.");
+    puts("\t5.- Departamentos.");
+    puts("\t6.- Volver.");
+    printf("\nIngresar opcion-> ");
+    scanf(" %d", &subMenuOpcion);
+    if (subMenuOpcion < 6 && subMenuOpcion > 0)
+        desplegart(tablas[subMenuOpcion - 1], subMenuOpcion, con);
+    setbuf(stdin, NULL); // Limpiando buffer
+    getchar();
+}
+
+/* Menu eliminar datos */
+void menuEliminar(Conexion con){
+    int subMenuOpcion;
+    char tablas[5][100] = {"pr1_clientes", "pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos"};
+    system("clear");
+    puts("\t\t\tMENU ELIMINAR DATOS\n");
+    puts("\t1.- Clientes.");
+    puts("\t2.- Asesores.");
+    puts("\t3.- Productos.");
+    puts("\t4.- Categorias.");
+    puts("\t5.- Departamentos.");
+    puts("\t6.- Volver.");
+    printf("\nIngresar opcion-> ");
+    scanf(" %d", &subMenuOpcion);
+    if (subMenuOpcion < 6 && subMenuOpcion > 0)
+        eliminard(tablas[subMenuOpcion - 1], subMenuOpcion, con);
+    setbuf(stdin, NULL); // Limpiando buffer
+    getchar();
+}

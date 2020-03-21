@@ -25,7 +25,7 @@ void ejecutarQueryDesplegar(char *query, Conexion con){
 }
 
 void desplegart(char *tabla, int opcion, Conexion con){
-    char identificador[10], query[500] = "UPDATE ", valorNuevo[100];
+    char identificador[10], query[500], valorNuevo[100];
     if(opcion == 1){
     puts("TABLA CLIENTES:");
     strcpy(query,"SELECT * FROM pr1_clientes");
