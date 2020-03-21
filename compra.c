@@ -9,6 +9,11 @@ void generarCompra(char* queryCompra, char *username, char *idTipoPago){
     strcat(queryCompra, "', 0);");
 }
 
+void errorCatcher(Conexion *con){
+    printf("Ha ocurrido un error. %s\nPresione enter para continuar...", mysql_error(&(con->mysql)));
+    getchar();
+}
+
 void generarQueryCompra(char *queryAuxiliar, char* idCompra, char* idProducto){
     strcpy(queryAuxiliar, "INSERT INTO pr1_compras_productos(pr1_compras_idCompra, pr1_productos_idProducto) VALUES(");
     strcat(queryAuxiliar, idCompra);
@@ -32,18 +37,15 @@ void realizarCompra(Conexion con){
     generarCompra(queryCompra, username, idTipoPago);
     mysql_init(&con.mysql);
     if (!mysql_real_connect(&con.mysql, con.server, con.user, con.password, con.db, 0, NULL, 0)){
-        printf("Error al conectarse: %s\n", mysql_error(&con.mysql));
-        getchar();
+        errorCatcher(&con);
         return;
     }
     if (mysql_select_db(&con.mysql, con.db)){ // Se conecta a la base de datos
-        printf("Error al seleccionar la base de datos: %s", mysql_error(&con.mysql));
-        getchar();
+        errorCatcher(&con);
         return;
     }
     if (mysql_query(&con.mysql, queryCompra) || mysql_query(&con.mysql, "SELECT idCompra FROM pr1_compras ORDER BY idCompra DESC LIMIT 1;")){
-        printf("Error, no se ha podido generar la compra: %s\n", mysql_error(&con.mysql));
-        getchar();
+        errorCatcher(&con);
         return;
     }
     con.res = mysql_store_result(&con.mysql);
@@ -59,13 +61,11 @@ void realizarCompra(Conexion con){
         strcat(query, idProducto);
         strcat(query, ";");
         if (mysql_query(&con.mysql, query)){
-            printf("Error al ejecutar el query %s\n", mysql_error(&con.mysql));
-            getchar();
+            errorCatcher(&con);
             return;
         }
         if (!(con.res = mysql_store_result(&con.mysql))){
-            printf("Error al obtener el query: %s\n", mysql_error(&con.mysql));
-            getchar();
+            errorCatcher(&con);
             return;
         }
         con.row = mysql_fetch_row(con.res);
@@ -75,12 +75,15 @@ void realizarCompra(Conexion con){
         }
         generarQueryCompra(queryAuxiliar, idCompra, idProducto);
         if(mysql_query(&con.mysql, queryAuxiliar)){
-            printf("Error al obtener el query: %s\n", mysql_error(&con.mysql));
-            getchar();
+            errorCatcher(&con);
             return;
         }
     } while (strcmp(idProducto, "-1"));
-    
+    sprintf(query, "UPDATE pr1_compras SET totalPagar = %f WHERE idCompra = %s;", totalCompra + totalEnvio, idCompra);
+    if (mysql_query(&con.mysql, query)){
+        errorCatcher(&con);
+        return;
+    }
     printf("Total de la compra: %f\nTotal del envio: %f\n", totalCompra, totalEnvio);
     getchar();
 }
