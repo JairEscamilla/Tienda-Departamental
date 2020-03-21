@@ -84,6 +84,7 @@ void realizarCompra(Conexion con){
         errorCatcher(&con);
         return;
     }
+    mysql_free_result(con.res);
     printf("Total de la compra: %f\nTotal del envio: %f\n", totalCompra, totalEnvio);
     getchar();
 }
