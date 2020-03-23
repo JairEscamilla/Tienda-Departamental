@@ -8,9 +8,9 @@
 void menu(){
     system("clear");
     puts("\t\t\tMENÚ\n");
-    puts("\t1.- Altas (Clientes/Asesores/Productos/Categorias/Departamentos/Comentarios/Devoluciones.)");
+    puts("\t1.- Altas (Clientes/Asesores/Productos/Categorias/Departamentos/Comentarios/Etc.)");
     puts("\t2.- Desplegar datos (Clientes/Asesores/Productos/Categorias/Departamentos).");
-    puts("\t3.- Actualizar datos (Clientes/Asesores/Productos/Categorias/Departamentos).");
+    puts("\t3.- Actualizar datos (Clientes/Asesores/Productos/Categorias/Comentarios/Etc).");
     puts("\t4.- Eliminar (Clientes/Asesores/Productos/Categorias/Departamentos).");
     puts("\t5.- Realizar compra.");
     puts("\t6.- Salir.");
@@ -67,7 +67,7 @@ void menuAltas(Conexion con){
 
 void menuActualizaciones(Conexion con){
     int subMenuOpcion;
-    char tablas[5][100] = {"pr1_clientes", "pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos"};
+    char tablas[11][100] = {"pr1_clientes", "pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos", "pr1_comentarios", "pr1_devoluciones", "pr1_cancelacion", "pr1_quejas", "pr1_tarjetas"};
     system("clear");
     setbuf(stdin, NULL); // Limpiando buffer
     puts("\t\t\tMENU ACTUALIZACIONES\n");
@@ -76,10 +76,15 @@ void menuActualizaciones(Conexion con){
     puts("\t3.- Productos.");
     puts("\t4.- Categorias.");
     puts("\t5.- Departamentos.");
-    puts("\t6.- Volver.");
+    puts("\t6.- Comentarios.");
+    puts("\t7.- Devoluciones.");
+    puts("\t8.- Cancelaciones.");
+    puts("\t9.- Quejas.");
+    puts("\t10.- Tarjetas.");
+    puts("\t11.- Volver.");
     printf("\nIngresar opcion-> ");
     scanf("%d", &subMenuOpcion);
-    if(subMenuOpcion < 6 && subMenuOpcion > 0)
+    if(subMenuOpcion < 11 && subMenuOpcion > 0)
         actualizar(tablas[subMenuOpcion-1], subMenuOpcion, con);
     getchar();
 }

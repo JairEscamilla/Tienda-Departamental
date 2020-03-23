@@ -25,32 +25,27 @@ void ejecutarQueryActualizacion(char *query, Conexion con){
 }
 
 void actualizar(char *tabla, int opcion, Conexion con){
-    int numberOfFields, numeroCampo;
+    int numberOfFields[11] = {11, 4, 6, 4, 2, 2, 4, 3, 3, 4}, numeroCampo;
     char identificador[10], query[500] = "UPDATE ", valorNuevo[100];
-    if(opcion == 1)
-        numberOfFields = 11;
-    if(opcion == 2)
-        numberOfFields = 4;
-    if(opcion == 3)
-        numberOfFields = 6;
-    if(opcion == 4)
-        numberOfFields = 4;
-    if(opcion == 5)
-        numberOfFields = 2;
-    char campos[5][11][150] = {
+    char campos[10][11][150] = {
         {"username", "password", "direccionEnvio", "idCategoria", "nombre", "apPaterno", "apMaterno", "fechaNac", "direccionFacturacion", "RFC", "codigoPostal"},
         {"idAsesor", "nombre", "apMaterno", "apPaterno"},
         {"idProducto", "nombreProducto", "descripcion", "precio", "stock", "costoEnvio"},
         {"idCategoriaP", "nombreCategoria", "descripcionCategoria", "idDepartamento"},
-        {"idDepartamento", "nombreDepartamento"}
+        {"idDepartamento", "nombreDepartamento"},
+        {"idComentario", "comentario"},
+        {"idDevolucion", "idCompra", "idProductoDevuelto", "comentarioDevolucion"},
+        {"idCancelacion", "comentarioCancelacion", "idCompra"},
+        {"idQueja",  "comentario", "status"},
+        {"idTarjeta", "numeroTarjeta", "fechaVencimiento", "username"}
     };
     system("clear");
     puts("\t\t\tMENU DE CAMPOS A EDITAR");
-    for(int i = 1; i < numberOfFields; i++)
+    for(int i = 1; i < numberOfFields[opcion -1]; i++)
         printf("\t%d.- %s\n", i, campos[opcion - 1][i]);
     printf("\nSeleccione el campo que desea editar-> ");
     scanf("%d", &numeroCampo);
-    if(numeroCampo < 1 || numeroCampo > numberOfFields)
+    if(numeroCampo < 1 || numeroCampo > numberOfFields[opcion - 1])
         return;
     setbuf(stdin, NULL);
     printf("Ingresar el %s que desea editar-> ", campos[opcion - 1][0]);
