@@ -20,24 +20,26 @@ void menu(){
 /* Menu de altas */
 void menuAltas(Conexion con){
     int opcionSubMenu;
-    char campos[6][7][150] = {
+    char campos[7][7][150] = {
         {"nombre del asesor", "apellido materno", "apellido paterno"},
         {"nombre del producto", "descripcion", "precio", "stock", "costo de envio"},
         {"nombre de la categoria", "descripcion de la categoria", "id del departamento al que pertenece"},
         {"nombre del departamento"},
         {"username", "idProducto", "comentario"},
-        {"id de compra", "id de producto a devolver", "comentario de devolucion"}
+        {"id de compra", "id de producto a devolver", "comentario de devolucion"},
+        {"comentario de cancelacion", "id de la compra"}
     };
-    char camposDB[6][7][150] = {
+    char camposDB[7][7][150] = {
         {"nombre", "apPaterno", "apMaterno"},
         {"nombreProducto", "descripcion", "precio", "stock", "costoEnvio"},
         {"nombreCategoria", "descripcionCategoria", "idDepartamento"},
         {"nombreDepartamento"},
         {"pr1_clientes_username", "pr1_productos_idProducto", "comentario"},
-        {"idCompra", "idProductoDevuelto", "comentarioDevolucion"}
+        {"idCompra", "idProductoDevuelto", "comentarioDevolucion"},
+        {"comentarioCancelacion", "idCompra"}
     };
-    char nombresTablas[8][100] = {"pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos", "pr1_comentarios", "pr1_devoluciones"};
-    int numeroCampos[7] = {3, 5, 3, 1, 3, 3};
+    char nombresTablas[8][100] = {"pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos", "pr1_comentarios", "pr1_devoluciones", "pr1_cancelacion"};
+    int numeroCampos[7] = {3, 5, 3, 1, 3, 3, 2};
     system("clear");
     puts("\t\t\tMENÚ ALTAS\n");
     puts("\t1.- Clientes.");
@@ -47,12 +49,13 @@ void menuAltas(Conexion con){
     puts("\t5.- Departamentos.");
     puts("\t6.- Comentarios.");
     puts("\t7.- Devoluciones.");
-    puts("\t8.- Volver.");
+    puts("\t8.- Cancelaciones.");
+    puts("\t9.- Volver.");
     printf("\nIngresar opcion-> ");
     scanf(" %d", &opcionSubMenu);
     if (opcionSubMenu == 1)
         insertarClientes(con);
-    else if (opcionSubMenu >= 2 && opcionSubMenu <= 7)
+    else if (opcionSubMenu >= 2 && opcionSubMenu <= 8)
         insertarDatos(campos[opcionSubMenu - 2], numeroCampos[opcionSubMenu - 2], nombresTablas[opcionSubMenu - 2], camposDB[opcionSubMenu - 2], con);
 }
 
