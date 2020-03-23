@@ -20,4 +20,4 @@ void errorCatcher(Conexion* con);
 
 void menuEliminar(Conexion con);
 void ejecutarQueryEliminar(char *query, Conexion con);
-void eliminard(char *tabla, int opcion, Conexion con);
+void eliminard(int opcion, Conexion con);

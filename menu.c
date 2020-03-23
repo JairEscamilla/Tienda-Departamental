@@ -117,7 +117,6 @@ void menuDesplegar(Conexion con){
 /* Menu eliminar datos */
 void menuEliminar(Conexion con){
     int subMenuOpcion;
-    char tablas[5][100] = {"pr1_clientes", "pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos"};
     system("clear");
     puts("\t\t\tMENU ELIMINAR DATOS\n");
     puts("\t1.- Clientes.");
@@ -125,11 +124,14 @@ void menuEliminar(Conexion con){
     puts("\t3.- Productos.");
     puts("\t4.- Categorias.");
     puts("\t5.- Departamentos.");
-    puts("\t6.- Volver.");
+    puts("\t6.- Comentarios.");
+    puts("\t7.- Quejas.");
+    puts("\t8.- Tarjetas.");
+    puts("\t9.- Volver.");
     printf("\nIngresar opcion-> ");
     scanf(" %d", &subMenuOpcion);
-    if (subMenuOpcion < 6 && subMenuOpcion > 0)
-        eliminard(tablas[subMenuOpcion - 1], subMenuOpcion, con);
+    if (subMenuOpcion < 9 && subMenuOpcion > 0)
+        eliminard(subMenuOpcion, con);
     setbuf(stdin, NULL); // Limpiando buffer
     getchar();
 }
