@@ -20,26 +20,28 @@ void menu(){
 /* Menu de altas */
 void menuAltas(Conexion con){
     int opcionSubMenu;
-    char campos[7][7][150] = {
+    char campos[8][7][150] = {
         {"nombre del asesor", "apellido materno", "apellido paterno"},
         {"nombre del producto", "descripcion", "precio", "stock", "costo de envio"},
         {"nombre de la categoria", "descripcion de la categoria", "id del departamento al que pertenece"},
         {"nombre del departamento"},
         {"username", "idProducto", "comentario"},
         {"id de compra", "id de producto a devolver", "comentario de devolucion"},
-        {"comentario de cancelacion", "id de la compra"}
+        {"comentario de cancelacion", "id de la compra"},
+        {"username", "id del asesor", "comentario", "status 1/0"}
     };
-    char camposDB[7][7][150] = {
+    char camposDB[8][7][150] = {
         {"nombre", "apPaterno", "apMaterno"},
         {"nombreProducto", "descripcion", "precio", "stock", "costoEnvio"},
         {"nombreCategoria", "descripcionCategoria", "idDepartamento"},
         {"nombreDepartamento"},
         {"pr1_clientes_username", "pr1_productos_idProducto", "comentario"},
         {"idCompra", "idProductoDevuelto", "comentarioDevolucion"},
-        {"comentarioCancelacion", "idCompra"}
+        {"comentarioCancelacion", "idCompra"},
+        {"pr1_clientes_username", "pr1_asesores_idAsesor", "comentario", "status"}
     };
-    char nombresTablas[8][100] = {"pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos", "pr1_comentarios", "pr1_devoluciones", "pr1_cancelacion"};
-    int numeroCampos[7] = {3, 5, 3, 1, 3, 3, 2};
+    char nombresTablas[9][100] = {"pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos", "pr1_comentarios", "pr1_devoluciones", "pr1_cancelacion", "pr1_quejas"};
+    int numeroCampos[8] = {3, 5, 3, 1, 3, 3, 2, 4};
     system("clear");
     puts("\t\t\tMENÚ ALTAS\n");
     puts("\t1.- Clientes.");
@@ -50,12 +52,13 @@ void menuAltas(Conexion con){
     puts("\t6.- Comentarios.");
     puts("\t7.- Devoluciones.");
     puts("\t8.- Cancelaciones.");
-    puts("\t9.- Volver.");
+    puts("\t9.- Quejas.");
+    puts("\t10.- Volver.");
     printf("\nIngresar opcion-> ");
     scanf(" %d", &opcionSubMenu);
     if (opcionSubMenu == 1)
         insertarClientes(con);
-    else if (opcionSubMenu >= 2 && opcionSubMenu <= 8)
+    else if (opcionSubMenu >= 2 && opcionSubMenu <= 9)
         insertarDatos(campos[opcionSubMenu - 2], numeroCampos[opcionSubMenu - 2], nombresTablas[opcionSubMenu - 2], camposDB[opcionSubMenu - 2], con);
 }
 
