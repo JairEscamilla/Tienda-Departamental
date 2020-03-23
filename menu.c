@@ -20,7 +20,7 @@ void menu(){
 /* Menu de altas */
 void menuAltas(Conexion con){
     int opcionSubMenu;
-    char campos[8][7][150] = {
+    char campos[9][7][150] = {
         {"nombre del asesor", "apellido materno", "apellido paterno"},
         {"nombre del producto", "descripcion", "precio", "stock", "costo de envio"},
         {"nombre de la categoria", "descripcion de la categoria", "id del departamento al que pertenece"},
@@ -28,9 +28,10 @@ void menuAltas(Conexion con){
         {"username", "idProducto", "comentario"},
         {"id de compra", "id de producto a devolver", "comentario de devolucion"},
         {"comentario de cancelacion", "id de la compra"},
-        {"username", "id del asesor", "comentario", "status 1/0"}
+        {"username", "id del asesor", "comentario", "status 1/0"},
+        {"numero de tarjeta", "fecha de vencimiento (AAAA-MM-DD)", "username"}
     };
-    char camposDB[8][7][150] = {
+    char camposDB[9][7][150] = {
         {"nombre", "apPaterno", "apMaterno"},
         {"nombreProducto", "descripcion", "precio", "stock", "costoEnvio"},
         {"nombreCategoria", "descripcionCategoria", "idDepartamento"},
@@ -38,10 +39,11 @@ void menuAltas(Conexion con){
         {"pr1_clientes_username", "pr1_productos_idProducto", "comentario"},
         {"idCompra", "idProductoDevuelto", "comentarioDevolucion"},
         {"comentarioCancelacion", "idCompra"},
-        {"pr1_clientes_username", "pr1_asesores_idAsesor", "comentario", "status"}
+        {"pr1_clientes_username", "pr1_asesores_idAsesor", "comentario", "status"},
+        {"numeroTarjeta", "fechaVencimiento", "username"}
     };
-    char nombresTablas[9][100] = {"pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos", "pr1_comentarios", "pr1_devoluciones", "pr1_cancelacion", "pr1_quejas"};
-    int numeroCampos[8] = {3, 5, 3, 1, 3, 3, 2, 4};
+    char nombresTablas[10][100] = {"pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos", "pr1_comentarios", "pr1_devoluciones", "pr1_cancelacion", "pr1_quejas", "pr1_tarjetas"};
+    int numeroCampos[10] = {3, 5, 3, 1, 3, 3, 2, 4, 3};
     system("clear");
     puts("\t\t\tMENÚ ALTAS\n");
     puts("\t1.- Clientes.");
@@ -53,12 +55,13 @@ void menuAltas(Conexion con){
     puts("\t7.- Devoluciones.");
     puts("\t8.- Cancelaciones.");
     puts("\t9.- Quejas.");
-    puts("\t10.- Volver.");
+    puts("\t10.- Tarjetas.");
+    puts("\t11.- Volver.");
     printf("\nIngresar opcion-> ");
     scanf(" %d", &opcionSubMenu);
     if (opcionSubMenu == 1)
         insertarClientes(con);
-    else if (opcionSubMenu >= 2 && opcionSubMenu <= 9)
+    else if (opcionSubMenu >= 2 && opcionSubMenu <= 10)
         insertarDatos(campos[opcionSubMenu - 2], numeroCampos[opcionSubMenu - 2], nombresTablas[opcionSubMenu - 2], camposDB[opcionSubMenu - 2], con);
 }
 
