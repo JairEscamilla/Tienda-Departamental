@@ -46,17 +46,7 @@ void menuAltas(Conexion con){
     int numeroCampos[10] = {3, 5, 3, 1, 3, 3, 2, 4, 3};
     system("clear");
     puts("\t\t\tMENÚ ALTAS\n");
-    puts("\t1.- Clientes.");
-    puts("\t2.- Asesores.");
-    puts("\t3.- Productos.");
-    puts("\t4.- Categorias.");
-    puts("\t5.- Departamentos.");
-    puts("\t6.- Comentarios.");
-    puts("\t7.- Devoluciones.");
-    puts("\t8.- Cancelaciones.");
-    puts("\t9.- Quejas.");
-    puts("\t10.- Tarjetas.");
-    puts("\t11.- Volver.");
+    opcionesMenu();
     printf("\nIngresar opcion-> ");
     scanf(" %d", &opcionSubMenu);
     if (opcionSubMenu == 1)
@@ -71,17 +61,7 @@ void menuActualizaciones(Conexion con){
     system("clear");
     setbuf(stdin, NULL); // Limpiando buffer
     puts("\t\t\tMENU ACTUALIZACIONES\n");
-    puts("\t1.- Clientes.");
-    puts("\t2.- Asesores.");
-    puts("\t3.- Productos.");
-    puts("\t4.- Categorias.");
-    puts("\t5.- Departamentos.");
-    puts("\t6.- Comentarios.");
-    puts("\t7.- Devoluciones.");
-    puts("\t8.- Cancelaciones.");
-    puts("\t9.- Quejas.");
-    puts("\t10.- Tarjetas.");
-    puts("\t11.- Volver.");
+    opcionesMenu();
     printf("\nIngresar opcion-> ");
     scanf("%d", &subMenuOpcion);
     if(subMenuOpcion < 11 && subMenuOpcion > 0)
@@ -95,17 +75,7 @@ void menuDesplegar(Conexion con){
     char tablas[11][100] = {"pr1_clientes", "pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos", "pr1_comentarios", "pr1_devoluciones", "pr1_cancelacion", "pr1_quejas", "pr1_tarjetas"};
     system("clear");
     puts("\t\t\tMENU DESPLEGAR DATOS\n");
-    puts("\t1.- Clientes.");
-    puts("\t2.- Asesores.");
-    puts("\t3.- Productos.");
-    puts("\t4.- Categorias.");
-    puts("\t5.- Departamentos.");
-    puts("\t6.- Comentarios.");
-    puts("\t7.- Devoluciones.");
-    puts("\t8.- Cancelaciones.");
-    puts("\t9.- Quejas.");
-    puts("\t10.- Tarjetas.");
-    puts("\t11.- Volver.");
+    opcionesMenu();
     printf("\nIngresar opcion-> ");
     scanf(" %d", &subMenuOpcion);
     if (subMenuOpcion < 11 && subMenuOpcion > 0)
@@ -134,4 +104,18 @@ void menuEliminar(Conexion con){
         eliminard(subMenuOpcion, con);
     setbuf(stdin, NULL); // Limpiando buffer
     getchar();
+}
+
+void opcionesMenu(){
+    puts("\t1.- Clientes.");
+    puts("\t2.- Asesores.");
+    puts("\t3.- Productos.");
+    puts("\t4.- Categorias.");
+    puts("\t5.- Departamentos.");
+    puts("\t6.- Comentarios.");
+    puts("\t7.- Devoluciones.");
+    puts("\t8.- Cancelaciones.");
+    puts("\t9.- Quejas.");
+    puts("\t10.- Tarjetas.");
+    puts("\t11.- Volver.");
 }
