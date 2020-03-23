@@ -42,33 +42,9 @@ void ejecutarQueryDesplegar(char *query, Conexion con){
 }
 
 void desplegart(char *tabla, int opcion, Conexion con){
-    char query[800];
-    if (opcion == 1){
-        puts("TABLA CLIENTES:");
-        strcpy(query, "SELECT * FROM pr1_clientes");
-        ejecutarQueryDesplegar(query, con);
-    }
-
-    if (opcion == 2){
-        puts("TABLA ASESORES:");
-        strcpy(query, "SELECT * FROM pr1_asesores");
-        ejecutarQueryDesplegar(query, con);
-    }
-
-    if (opcion == 3){
-        puts("TABLA PRODUCTOS:");
-        strcpy(query, "SELECT * FROM pr1_productos");
-        ejecutarQueryDesplegar(query, con);
-    }
-
-    if (opcion == 4){
-        puts("TABLA CATEGORIAS:");
-        strcpy(query, "SELECT * FROM pr1_categorias_productos");
-        ejecutarQueryDesplegar(query, con);
-    }
-    if (opcion == 5){
-        puts("TABLA DEPARTAMENTOS:");
-        strcpy(query, "SELECT * FROM pr1_departamentos");
-        ejecutarQueryDesplegar(query, con);
-    }
+    char query[800] = "SELECT * FROM ";
+    strcat(query, tabla);
+    strcat(query, ";");
+    puts("Desplegando tabla: ");
+    ejecutarQueryDesplegar(query, con);
 }

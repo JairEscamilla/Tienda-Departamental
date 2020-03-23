@@ -92,7 +92,7 @@ void menuActualizaciones(Conexion con){
 /* Menu desplegar datos */
 void menuDesplegar(Conexion con){
     int subMenuOpcion;
-    char tablas[5][100] = {"pr1_clientes", "pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos"};
+    char tablas[11][100] = {"pr1_clientes", "pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos", "pr1_comentarios", "pr1_devoluciones", "pr1_cancelacion", "pr1_quejas", "pr1_tarjetas"};
     system("clear");
     puts("\t\t\tMENU DESPLEGAR DATOS\n");
     puts("\t1.- Clientes.");
@@ -100,10 +100,15 @@ void menuDesplegar(Conexion con){
     puts("\t3.- Productos.");
     puts("\t4.- Categorias.");
     puts("\t5.- Departamentos.");
-    puts("\t6.- Volver.");
+    puts("\t6.- Comentarios.");
+    puts("\t7.- Devoluciones.");
+    puts("\t8.- Cancelaciones.");
+    puts("\t9.- Quejas.");
+    puts("\t10.- Tarjetas.");
+    puts("\t11.- Volver.");
     printf("\nIngresar opcion-> ");
     scanf(" %d", &subMenuOpcion);
-    if (subMenuOpcion < 6 && subMenuOpcion > 0)
+    if (subMenuOpcion < 11 && subMenuOpcion > 0)
         desplegart(tablas[subMenuOpcion - 1], subMenuOpcion, con);
     setbuf(stdin, NULL); // Limpiando buffer
     getchar();
