@@ -8,7 +8,7 @@
 void menu(){
     system("clear");
     puts("\t\t\tMENÚ\n");
-    puts("\t1.- Altas (Clientes/Asesores/Productos/Categorias/Departamentos/Comentarios.)");
+    puts("\t1.- Altas (Clientes/Asesores/Productos/Categorias/Departamentos/Comentarios/Devoluciones.)");
     puts("\t2.- Desplegar datos (Clientes/Asesores/Productos/Categorias/Departamentos).");
     puts("\t3.- Actualizar datos (Clientes/Asesores/Productos/Categorias/Departamentos).");
     puts("\t4.- Eliminar (Clientes/Asesores/Productos/Categorias/Departamentos).");
@@ -20,19 +20,21 @@ void menu(){
 /* Menu de altas */
 void menuAltas(Conexion con){
     int opcionSubMenu;
-    char campos[5][7][150] = {
+    char campos[6][7][150] = {
         {"nombre del asesor", "apellido materno", "apellido paterno"},
         {"nombre del producto", "descripcion", "precio", "stock", "costo de envio"},
         {"nombre de la categoria", "descripcion de la categoria", "id del departamento al que pertenece"},
         {"nombre del departamento"},
-        {"username", "idProducto", "comentario"}
+        {"username", "idProducto", "comentario"},
+        {"id de compra", "id de producto a devolver", "comentario de devolucion"}
     };
-    char camposDB[5][7][150] = {
+    char camposDB[6][7][150] = {
         {"nombre", "apPaterno", "apMaterno"},
         {"nombreProducto", "descripcion", "precio", "stock", "costoEnvio"},
         {"nombreCategoria", "descripcionCategoria", "idDepartamento"},
         {"nombreDepartamento"},
-        {"pr1_clientes_username", "pr1_productos_idProducto", "comentario"}
+        {"pr1_clientes_username", "pr1_productos_idProducto", "comentario"},
+        {"idCompra", "idProductoDevuelto", "comentarioDevolucion"}
     };
     system("clear");
     puts("\t\t\tMENÚ ALTAS\n");
@@ -42,7 +44,8 @@ void menuAltas(Conexion con){
     puts("\t4.- Categorias.");
     puts("\t5.- Departamentos.");
     puts("\t6.- Comentarios.");
-    puts("\t7.- Volver.");
+    puts("\t7.- Devoluciones.");
+    puts("\t8.- Volver.");
     printf("\nIngresar opcion-> ");
     scanf(" %d", &opcionSubMenu);
     if (opcionSubMenu == 1)
@@ -57,6 +60,8 @@ void menuAltas(Conexion con){
         insertarDatos(campos[3], 1, "pr1_departamentos", camposDB[3], con);
     if (opcionSubMenu == 6)
         insertarDatos(campos[4], 3, "pr1_comentarios", camposDB[4], con);
+    if (opcionSubMenu == 7)
+        insertarDatos(campos[5], 3, "pr1_devoluciones", camposDB[5], con);
 }
 
 void menuActualizaciones(Conexion con){
