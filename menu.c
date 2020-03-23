@@ -36,6 +36,8 @@ void menuAltas(Conexion con){
         {"pr1_clientes_username", "pr1_productos_idProducto", "comentario"},
         {"idCompra", "idProductoDevuelto", "comentarioDevolucion"}
     };
+    char nombresTablas[8][100] = {"pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos", "pr1_comentarios", "pr1_devoluciones"};
+    int numeroCampos[7] = {3, 5, 3, 1, 3, 3};
     system("clear");
     puts("\t\t\tMENÚ ALTAS\n");
     puts("\t1.- Clientes.");
@@ -50,18 +52,8 @@ void menuAltas(Conexion con){
     scanf(" %d", &opcionSubMenu);
     if (opcionSubMenu == 1)
         insertarClientes(con);
-    if (opcionSubMenu == 2)
-        insertarDatos(campos[0], 3, "pr1_asesores", camposDB[0], con);
-    if (opcionSubMenu == 3)
-        insertarDatos(campos[1], 5, "pr1_productos", camposDB[1], con);
-    if (opcionSubMenu == 4)
-        insertarDatos(campos[2], 3, "pr1_categorias_productos", camposDB[2], con);
-    if (opcionSubMenu == 5)
-        insertarDatos(campos[3], 1, "pr1_departamentos", camposDB[3], con);
-    if (opcionSubMenu == 6)
-        insertarDatos(campos[4], 3, "pr1_comentarios", camposDB[4], con);
-    if (opcionSubMenu == 7)
-        insertarDatos(campos[5], 3, "pr1_devoluciones", camposDB[5], con);
+    else if (opcionSubMenu >= 2 && opcionSubMenu <= 7)
+        insertarDatos(campos[opcionSubMenu - 2], numeroCampos[opcionSubMenu - 2], nombresTablas[opcionSubMenu - 2], camposDB[opcionSubMenu - 2], con);
 }
 
 void menuActualizaciones(Conexion con){
