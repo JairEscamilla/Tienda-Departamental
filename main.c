@@ -3,7 +3,7 @@
  * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
  * @date:    24/marzo/2020
  * @file:    main.c
- * @brief:  
+ * @brief:  Este archivo contiene el menu principal con las funciones segun lo seleccionado por el usuario
  */
 /* Archivos de inclusion */
 #include <stdio.h>
@@ -12,14 +12,16 @@
 
 /* Funcion principal */
 int main(){
-    Conexion con;
+    Conexion con; // Creamos variable para la conexion
+    int opcion; // Variable de opcion
+    /* Copiamos los datos de ingresoa la variable de conexion */
     strcpy(con.server, "localhost");
     strcpy(con.user, "root");
     strcpy(con.password, "#Password123");
     strcpy(con.db, "practica1");
-    void (*funcionesMenu[5])(Conexion con) = {menuAltas, menuDesplegar, menuActualizaciones, menuEliminar, realizarCompra};
-    int opcion;
+    void (*funcionesMenu[5])(Conexion con) = {menuAltas, menuDesplegar, menuActualizaciones, menuEliminar, realizarCompra}; // Arreglo de apuntadores a funciones que contiene las funciones del menú principal
     do{
+        /* Desplegamos menú, leemos opcion y mandamos a llamar a la opcion seleccionada */
         menu();
         scanf(" %d", &opcion);
         if(opcion >= 1 && opcion < 6)
