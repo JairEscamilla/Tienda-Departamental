@@ -1,10 +1,17 @@
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    27/marzo/2020
+ * @file:    inserciones.c
+ * @brief:  Este archivo contiene las funciones de menu.
+ */
 /* Archivos de inclusion */
 #include <stdio.h>
 #include <stdlib.h> 
 #include <string.h>
 #include "headers.h"
 /* Desarrollo de funciones */
-/* Menu principal */
+/* * Funcion que despliega el menu principal.
+*/
 void menu(){
     system("clear");
     puts("\t\t\tMENÚ\n");
@@ -17,7 +24,9 @@ void menu(){
     printf("\nIngresar opcion-> ");
 }
 
-/* Menu de altas */
+/* * Funcion de menú de altas.
+   * @param Conexion con. Recibe la variable de conexion de la base de datos.
+*/
 void menuAltas(Conexion con){
     int opcionSubMenu;
     char campos[9][7][150] = {
@@ -55,6 +64,9 @@ void menuAltas(Conexion con){
         insertarDatos(campos[opcionSubMenu - 2], numeroCampos[opcionSubMenu - 2], nombresTablas[opcionSubMenu - 2], camposDB[opcionSubMenu - 2], con);
 }
 
+/* * Funcion de menu de actualizaciones.
+   * @param Conexion con. Recibe la variable de conexion de la base de datos.
+*/
 void menuActualizaciones(Conexion con){
     int subMenuOpcion;
     char tablas[11][100] = {"pr1_clientes", "pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos", "pr1_comentarios", "pr1_devoluciones", "pr1_cancelacion", "pr1_quejas", "pr1_tarjetas"};
@@ -69,7 +81,9 @@ void menuActualizaciones(Conexion con){
     getchar();
 }
 
-/* Menu desplegar datos */
+/* * Funcion de menu de desplegar datos.
+   * @param Conexion con. Recibe la variable de conexion de la base de datos.
+*/
 void menuDesplegar(Conexion con){
     int subMenuOpcion;
     char tablas[11][100] = {"pr1_clientes", "pr1_asesores", "pr1_productos", "pr1_categorias_productos", "pr1_departamentos", "pr1_comentarios", "pr1_devoluciones", "pr1_cancelacion", "pr1_quejas", "pr1_tarjetas"};
@@ -79,12 +93,14 @@ void menuDesplegar(Conexion con){
     printf("\nIngresar opcion-> ");
     scanf(" %d", &subMenuOpcion);
     if (subMenuOpcion < 11 && subMenuOpcion > 0)
-        desplegart(tablas[subMenuOpcion - 1], subMenuOpcion, con);
+        desplegart(tablas[subMenuOpcion - 1], con);
     setbuf(stdin, NULL); // Limpiando buffer
     getchar();
 }
 
-/* Menu eliminar datos */
+/* * Funcion de menu de eliminar datos.
+   * @param Conexion con. Recibe la variable de conexion de la base de datos.
+*/
 void menuEliminar(Conexion con){
     int subMenuOpcion;
     system("clear");
@@ -106,6 +122,9 @@ void menuEliminar(Conexion con){
     getchar();
 }
 
+/* * Funcion que despliega las opciones de menu.
+   * @param Conexion con. Recibe la variable de conexion de la base de datos.
+*/
 void opcionesMenu(){
     puts("\t1.- Clientes.");
     puts("\t2.- Asesores.");

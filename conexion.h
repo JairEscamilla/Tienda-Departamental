@@ -1,3 +1,9 @@
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    27/marzo/2020
+ * @file:    conexion.h
+ * @brief:  Este archivo contiene la estructura para la conexion con mysql
+ */
 /* Archivos de inclusion */
 #include <mysql/mysql.h>
 /* Desarrollando estructura de conexion */

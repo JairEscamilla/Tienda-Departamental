@@ -1,9 +1,22 @@
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    27/marzo/2020
+ * @file:    eliminar.c
+ * @brief:  Este archivo contiene las funciones necesarias para eliminar informacion de la base de datos
+ */
+/* Archivos de inclusion */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "conexion.h"
+/* DESARROLLANDO LAS FUNCIONES */
 
+/* * Funcion que ejecuta el query para eliminar datos.
+   * @param char* query. Recibe una cadena de texto que será ejecutada como query en la base de datos.
+   * @param Conexion con. Recibe la variable de conexion de la base de datos.
+*/
 void ejecutarQueryEliminar(char *query, Conexion con){
+    /* Conexion y ejecucion del query en la base de datos */
     mysql_init(&con.mysql);
     if (!mysql_real_connect(&con.mysql, con.server, con.user, con.password, con.db, 0, NULL, 0)){
         printf("Error al conectarse a la base de datos: %s\nPresiona enter para continuar...", mysql_error(&con.mysql));
@@ -23,6 +36,10 @@ void ejecutarQueryEliminar(char *query, Conexion con){
     mysql_close(&con.mysql);
 }
 
+/* * Funcion que pide datos de la informacion que se desea eliminar.
+   * @param int opcion. Recibe la opcion seleccionada por el usuario,
+   * @param Conexion con. Recibe la variable de conexion de la base de datos.
+*/
 void eliminard(int opcion, Conexion con){
     char usern[30], idA[3], idP[3], idC[3], idD[3];
     char query[150];

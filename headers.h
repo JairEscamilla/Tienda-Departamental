@@ -1,4 +1,10 @@
-/* Archivos de inclusion */ 
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    27/marzo/2020
+ * @file:    headers.h
+ * @brief:  Este archivo contiene las los encabezados de las funciones.
+ */
+/* Archivos de inclusion */
 #include "conexion.h"
 /* Prototipos de las funciones */
 void menu();
@@ -15,7 +21,7 @@ void generarCompra(char* queryCompra, char *username, char *idTipoPago);
 void generarQueryCompra(char *queryAuxiliar, char *idCompra, char *idProducto);
 void menuDesplegar(Conexion con);
 void ejecutarQueryDesplegar(char *query, Conexion con);
-void desplegart(char *tabla, int opcion, Conexion con);
+void desplegart(char *tabla, Conexion con);
 void errorCatcher(Conexion* con);
 
 void menuEliminar(Conexion con);

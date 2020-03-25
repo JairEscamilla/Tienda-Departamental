@@ -1,7 +1,6 @@
-
 /*
  * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
- * @date:    24/marzo/2020
+ * @date:    27/marzo/2020
  * @file:    main.c
  * @brief:  Este archivo contiene el menu principal con las funciones segun lo seleccionado por el usuario
  */

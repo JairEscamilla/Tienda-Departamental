@@ -1,9 +1,23 @@
+/*
+ * @author:  Allan Jair Escamilla Hernández, María Gabriela Uribe 
+ * @date:    27/marzo/2020
+ * @file:    desplegar.c
+ * @brief:  Este archivo contiene las funciones para desplegar las tablas de la base de datos.
+ */
+/* Archivos de inclusion */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "conexion.h"
 
+/* DESARROLLANDO LAS FUNCIONES */
+
+/* * Funcion que ejecuta el query de desplegar.
+   * @param char* query. Recibe una cadena de texto que será ejecutada como query en la base de datos.
+   * @param Conexion con. Recibe la variable de conexion de la base de datos.
+*/
 void ejecutarQueryDesplegar(char *query, Conexion con){
+    /* Nos conectamos con la base de datos */
     mysql_init(&con.mysql);
     if (!mysql_real_connect(&con.mysql, con.server, con.user, con.password, con.db, 0, NULL, 0)){
         printf("Error al conectarse a la base de datos: %s\nPresiona enter para continuar...", mysql_error(&con.mysql));
@@ -25,6 +39,7 @@ void ejecutarQueryDesplegar(char *query, Conexion con){
         getchar();
         return;
     }
+    /* Obtenemos y desplegamos los datos obtenidos de la base de datos */ 
     while ((con.row = mysql_fetch_row(con.res))){
         printf("\t");
         for (int i = 0; i < mysql_num_fields(con.res); i++){
@@ -41,7 +56,11 @@ void ejecutarQueryDesplegar(char *query, Conexion con){
     mysql_close(&con.mysql);
 }
 
-void desplegart(char *tabla, int opcion, Conexion con){
+/* * Funcion que genera el query para desplegar datos.
+   * @param char* tabla. Recibe una cadena de texto que será el nombre de la tabla de donde obtendremos los datos.
+   * @param Conexion con. Recibe la variable de conexion de la base de datos.
+*/
+void desplegart(char *tabla, Conexion con){
     char query[800] = "SELECT * FROM ";
     strcat(query, tabla);
     strcat(query, ";");
